@@ -12,8 +12,13 @@ website:
       - text: Home
         href: index.qmd
       - text: Assignment 1
-        href: content/assignment1.qmd
+        href: a1.qmd
       - text: Assignment 2
-        href: content/assignment2.qmd
+        href: ca2.qmd
       - text: Assignment 3
-        href: content/assignment3.qmd
+        href: a3.qmd
+
+publish:
+  github:
+    branch: main     # where your site lives
+    folder: docs     # output folder served by Pages

@@ -1,7 +1,250 @@
 ---
-title: "assignment-analyses"
+title: "Yvonne Wang - Assignments 1-3 Part 2 Analysis"
 ---
 
-This is a Quarto website.
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## Assignment 1
+
+```{python}
+import pandas as pd
+from lets_plot import *
+
+LetsPlot.setup_html()
+
+# Load the NBA 2019 dataset
+url = "https://raw.githubusercontent.com/dataprofessor/data/master/nba-player-stats-2019.csv"
+nba = pd.read_csv(url)
+nba = nba.dropna()
+nba.head()
+```
+
+```{python}
+ggplot(nba, aes(x='PTS', y='AST', size='TRB', color='Pos')) + \
+    geom_point(alpha=0.7) + \
+    ggtitle("Points vs Assists (size = Rebounds, color = Position)")
+
+# RELATIONSHIP:
+# Points and Assists have a positive correlation
+# Rebound size is higher for forwards/centers
+# Guards (G) typically assist more
+```
+
+```{python}
+ggplot(nba, aes(x='Pos', y='AST')) + \
+    geom_boxplot(fill='lightblue') + \
+    ggtitle("Assists Distribution by Position")
+
+```
+
+```{python}
+ggplot(nba, aes(x='PTS')) + \
+    geom_histogram(binwidth=2, fill='orange', color='black') + \
+    ggtitle("Distribution of Points Per Game")
+
+```
+
+```{python}
+# Question: Who are the top 5 scoring guards with >5 assists/game?
+top_guards = (
+    nba[['Player', 'Pos', 'PTS', 'AST']]
+    .query("Pos.str.contains('G') and AST > 5", engine='python')
+    .sort_values(by='PTS', ascending=False)
+    .head(5)
+)
+print(top_guards)
+
+```
+
+```{python}
+# Average points and assists by position.
+# This shows the average points and assists for each position based on the dataset.
+# We can see that the average points is the highest for SF-SG, and the average assists is the highest for PG. This is consistent with the roles in basketball.
+# This is helpful to let us understand the type and magnitude of contribution in points and assists by position.
+summary = nba.groupby("Pos").agg(
+    avg_pts=('PTS', 'mean'),
+    avg_ast=('AST', 'mean'),
+    count=('Player', 'count')
+).reset_index()
+
+print(summary)
+
+```
+
+```{python}
+# Save to CSV (comma)
+nba.to_csv("nba_comma.csv", index=False)
+
+# Save to pipe-delimited file
+nba.to_csv("nba_pipe.csv", sep="|", index=False)
+
+# Load both back
+nba_comma = pd.read_csv("nba_comma.csv")
+nba_pipe = pd.read_csv("nba_pipe.csv", sep="|")
+
+```
+
+## Assignment 2
+
+```{python}
+import pandas as pd
+from lets_plot import *
+
+LetsPlot.setup_html()
+
+# Loading the NBA 2019 dataset
+url = "https://raw.githubusercontent.com/dataprofessor/data/master/nba-player-stats-2019.csv"
+nba = pd.read_csv(url)
+nba = nba.dropna()
+nba.head()
+```
+
+Part 2 - Q1
+
+```{python}
+# Create the scatter plot
+p = (ggplot(nba, aes(x='PTS', y='AST', color='Age'))
+     + geom_point()
+     + labs(
+         title='Points vs. Assists of NBA Players',
+         subtitle='Colored by Player Age',
+         caption='Source: dataprofessor/data',
+         x='Total Points (PTS)',
+         y='Total Assists (AST)',
+         color='Age of Player'
+     )
+     + theme(
+         axis_text=element_text(color='blue', face='bold'),
+         plot_title=element_text(size=16, face='bold'),
+         plot_subtitle=element_text(size=12, color='gray')
+     )
+     + scale_color_continuous(name='Player Age')
+    )
+
+# Find the player with the highest assists
+player_with_max_ast = nba.loc[nba['AST'].idxmax()]
+
+# Create a DataFrame for the annotation
+annotation_df = pd.DataFrame([player_with_max_ast])
+
+# Create the annotation label with player name, assist count, and age
+annotation_df['label_text'] = (annotation_df['Player'] + ' (AST: ' +
+                               annotation_df['AST'].astype(int).astype(str) +
+                               ', Age: ' + annotation_df['Age'].astype(int).astype(str) + ')')
+
+# Annotate this player
+p = (p
+     + geom_point(aes(x='PTS', y='AST'), data=annotation_df, size=5, color='red')
+     + geom_text(data=annotation_df,
+                 mapping=aes(x='PTS', y='AST', label='label_text'),
+                 nudge_x=10, nudge_y=5, ha='left', va='bottom')
+    )
+
+p
+```
+
+Part 2 - Q2
+
+```{python}
+import statsmodels.formula.api as smf
+
+# Creating a linear regression model
+model = smf.ols('PTS ~ AST', data=nba)
+results = model.fit()
+
+print(results.summary())
+```
+
+Comments on findings (brief): The OLS (Ordinary Least Squares) regression results show the relationship between 'PTS' (dependent variable) and 'AST' (independent variable).
+The R-squared value is approximately 0.457, indicating that about 45.7% of the variance in total points ('PTS') can be explained by the total assists ('AST') in this model.
+The coefficient for AST is approximately 2.3989. This suggests that, on average, for each additional assist a player has, their total points tend to increase by about 2.4 points, holding other factors constant (though in this simple model, 'AST' is the only predictor).
+The p-value associated with the 'AST' coefficient is ~0, which is very low (< 5%). This indicates that the relationship between assists and points is statistically significant; we can reject the null hypothesis that there is no relationship between them.
+To sum up - there's a statistically significant and positive relationship between the number of assists and the total points scored by NBA players in this dataset, with assists explaining a moderate portion of the variation in points.
+
+
+## Assignment 3
+```{python}
+import pandas as pd
+from lets_plot import *
+
+LetsPlot.setup_html()
+
+# Loading the NBA 2019 dataset
+url = "https://raw.githubusercontent.com/dataprofessor/data/master/nba-player-stats-2019.csv"
+df = pd.read_csv(url)
+print(df.shape)
+df.head()
+```
+
+Part 2 - 1.1:
+Yes, the data is already tidy because:
+* Each row = one observation (one player‐season)
+* Each column = one variable (age, team, PTS, etc.)
+* Each cell = one value
+
+Part 2 - 1.2: The data is initially in WIDE format where there is one observation unit per row and stats are columns. We'll now convert it to LONG.
+
+```{python}
+# These columns collectively identify each player‐season:
+id_vars = ["Player"]
+
+# Everything else (all per‐game stats, percentages, etc.) we’ll treat as measurement variables:
+value_vars = [c for c in df.columns if c not in id_vars]
+
+```
+
+```{python}
+df.columns
+```
+
+```{python}
+long = df.melt(
+    id_vars=id_vars,
+    value_vars=value_vars,
+    var_name="Stat",
+    value_name="Value"
+)
+
+# Inspect the first few rows:
+long.head
+
+```
+
+Part 2 - 2.1
+
+```{python}
+df["Player"] = df["Player"].str.replace(
+    r"(\w+)$",                       # capture the final “word” (surname)
+    lambda m: m.group(1).upper(),    # replace it with its .upper() version
+    regex=True
+)
+
+df["Player"].head(5)
+```
+
+Part 2 - 2.2: N/A - The NBA data has no date/time columns
+
+Part 2 - 2.3
+
+The only “missing” (NaN) values appear in percentage columns whenever the player had zero attempts for that category. 
+
+For example: FG% (field‐goal %) is NaN if FGA (field‐goal attempts per game) = 0 (i.e., the player never attempted a field goal).
+
+Because percentages are computed as “made ÷ attempted,” a zero in the denominator produces NaN.
+
+Part 2 - 2.4
+
+```{python}
+# (1) Build two boolean masks:
+young_mask = df["Age"] < 25
+high_scoring_mask = df["PTS"] >= 20
+
+# (2) Combine them with & (AND) to get players satisfying both:
+filtered = df[ young_mask & high_scoring_mask ]
+
+
+filtered[["Player", "Age", "Tm", "PTS"]]
+
+```
+
+References
+OpenAI. (2023). ChatGPT (June 16 version) [Large language model]. https://chat.openai.com/chat

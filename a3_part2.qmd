@@ -1,0 +1,518 @@
+---
+title: "Assignment 3, Part 2 Analysis"
+format: html
+---
+
+```{python}
+import pandas as pd
+import regex as re
+import numpy as np
+
+words = pd.read_csv("https://raw.githubusercontent.com/byuidatascience/data4python4ds/refs/heads/master/data-raw/words/words.csv")
+sentences = pd.read_csv("https://raw.githubusercontent.com/byuidatascience/data4python4ds/refs/heads/master/data-raw/sentences/sentences.csv")
+gss_cat = pd.read_csv("https://raw.githubusercontent.com/byuidatascience/data4python4ds/refs/heads/master/data-raw/gss_cat/gss_cat.csv")
+weather = pd.read_csv("https://raw.githubusercontent.com/byuidatascience/data4python4ds/refs/heads/master/data-raw/weather/weather.csv")
+```
+
+# Part 1
+
+```{python}
+words["length"] = words.name.str.len()
+words["vowels"] = words.name.str.count(r"[aeiouy]")
+words["vowel_prop"] = words.vowels / words.length
+words
+
+```
+
+```{python}
+max_count = words["vowels"].max()
+words_with_max_vowels = words.loc[words["vowels"] == max_count, "name"].tolist()
+
+max_prop = words["vowel_prop"].max()
+words_with_max_prop = words.loc[words["vowel_prop"] == max_prop, "name"].tolist()
+
+print("Part 1 - Q1:")
+print(f"Most vowels (count = {max_count}): {words_with_max_vowels}")
+print(f"Highest vowel proportion (ratio = {max_prop:.3f}): {words_with_max_prop}")
+```
+
+Part 1 - Q2:
+
+```{python}
+W = words["name"]
+
+# (a) Start with "y":  ^y
+starts_with_y = W.str.contains(r"^y", flags=re.IGNORECASE)
+
+# (b) Don't start with "y":  ^(?!y)
+not_start_y = W.str.contains(r"^(?!y)", flags=re.IGNORECASE)
+
+# (c) End with "x":  x$
+ends_with_x = W.str.contains(r"x$", flags=re.IGNORECASE)
+
+# (d) Exactly three letters long:  ^[A-Za-z]{3}$
+exactly_three = W.str.contains(r"^[A-Za-z]{3}$")
+
+# (e) Seven letters or more:  ^[A-Za-z]{7,}$
+seven_or_more = W.str.contains(r"^[A-Za-z]{7,}$")
+
+# (f) Contain a vowel-consonant pair:  [aeiou][^aeiou]
+vowel_cons_pair = W.str.contains(r"[aeiou][^aeiou]", flags=re.IGNORECASE)
+
+# (g) At least two vowel-consonant pairs in a row:  (?:[aeiou][^aeiou]){2}
+two_pairs = W.str.contains(r"(?:[aeiou][^aeiou]){2}", flags=re.IGNORECASE)
+
+# (h) Only consist of repeated vowel-consonant pairs:  ^(?:[aeiou][^aeiou])+$
+only_vc_repeats = W.str.contains(r"^(?:[aeiou][^aeiou])+$", flags=re.IGNORECASE)
+
+# Show a sample of matches for each category:
+results = {
+    "starts_with_y": words.loc[starts_with_y, "name"].tolist()[:10],
+    "not_start_y": words.loc[not_start_y, "name"].tolist()[:10],
+    "ends_with_x": words.loc[ends_with_x, "name"].tolist()[:10],
+    "exactly_three": words.loc[exactly_three, "name"].tolist()[:10],
+    "seven_or_more": words.loc[seven_or_more, "name"].tolist()[:10],
+    "vowel_cons_pair": words.loc[vowel_cons_pair, "name"].tolist()[:10],
+    "two_pairs": words.loc[two_pairs, "name"].tolist()[:10],
+    "only_vc_repeats": words.loc[only_vc_repeats, "name"].tolist()[:10],
+}
+
+for key, sample in results.items():
+    print(f"{key} (sample 10): {sample}\n")
+
+```
+
+Part 1 - Q3:
+
+```{python}
+# Build a set for fast lookup
+word_set = set(words["name"])
+
+def swap_ends(w: str) -> str:
+    if len(w) <= 1:
+        return w
+    return w[-1] + w[1:-1] + w[0]
+
+# Compute the “swapped” word
+words["swapped"] = words["name"].apply(swap_ends)
+
+# Mark which swapped version is also in the original list
+words["swapped_in_list"] = words["swapped"].isin(word_set)
+
+# Filter down to only those rows where swapped_in_list == True
+still_in_words = words.loc[words["swapped_in_list"], ["name", "swapped"]].copy()
+
+# Display a few examples
+still_in_words
+
+```
+
+Part 1 - Q4:
+
+```{python}
+gss_cat["rincome"] = gss_cat["rincome"].astype("category")
+gss_cat["partyid"] = gss_cat["partyid"].astype("category")
+gss_cat.head(5)
+```
+
+```{python}
+gss_cat["rincome"].value_counts().plot(kind="bar")
+```
+
+The default bar chart is hard to understand because it has many categories that are long and complexm, the order is not intuitive, and the text is shown vertically. I could improve the plot by changing to horizontal/diagonal x-axis labels, making the brackets appear in ascending order with non-number categories placed ath tend, and potentially grouping non-response codes into a single bar (refused, no answer) for visual clarity.
+
+Part 1 - Q5:
+
+```{python}
+def simplify_party(pid: str) -> str:
+    pid_lower = pid.lower()
+    if "democrat" in pid_lower:
+        return "Democrat"
+    elif "republican" in pid_lower:
+        return "Republican"
+    elif "independent" in pid_lower or pid_lower.startswith("ind"):
+        return "Independent"
+    else:
+        return "Other"
+    
+gss_cat["party_simp"] = gss_cat["partyid"].apply(simplify_party)
+```
+
+```{python}
+import matplotlib.pyplot as plt
+# 4. For plotting, keep only Democrat, Republican, Independent
+gss_filtered = gss_cat[gss_cat["party_simp"].isin(["Democrat", "Republican", "Independent"])]
+
+# 5. Compute counts per year and party
+counts = (
+    gss_filtered
+    .groupby(["year", "party_simp"])
+    .size()
+    .reset_index(name="count")
+)
+
+# 6. Compute total respondents per year (including all categories)
+total_per_year = gss_cat.groupby("year").size().reset_index(name="total")
+
+# 7. Merge counts with total to get proportions
+counts = counts.merge(total_per_year, on="year")
+counts["proportion"] = counts["count"] / counts["total"]
+
+# 8. Pivot so that each party is a column
+pivot = counts.pivot(index="year", columns="party_simp", values="proportion")
+
+# 9. Plot the proportions over time using matplotlib
+plt.figure(figsize=(10, 5))
+for party in ["Democrat", "Republican", "Independent"]:
+    if party in pivot.columns:
+        plt.plot(pivot.index, pivot[party], marker='o', label=party)
+
+plt.xlabel("Year")
+plt.ylabel("Proportion of Respondents")
+plt.title("Proportion Identifying as Democrat, Republican, or Independent Over Time")
+plt.legend()
+plt.grid(True)
+plt.tight_layout()
+plt.show()
+```
+
+Ans: the amount of Republicans has declined over time, Independent has slightly increased, and Democrat has stayed relatively the same.
+
+Part 1 - Q6:
+
+```{python}
+from datetime import datetime
+
+# The raw strings
+d1 = "January 1, 2010"
+d2 = "2015-Mar-07"
+d3 = "06-Jun-2017"
+d4 = "August 19 (2015)"
+d5 = "12/30/14"   # should become 2014-12-30
+
+t1 = "1705"               # meaning 17:05:00
+t2 = "11:15:10.12 PM"     # meaning 23:15:10.120000
+
+# 1) d1: "January 1, 2010" → format "%B %d, %Y"
+dt1 = datetime.strptime(d1, "%B %d, %Y")
+#    dt1 == datetime(2010, 1, 1, 0, 0, 0)
+
+# 2) d2: "2015-Mar-07" → format "%Y-%b-%d"
+dt2 = datetime.strptime(d2, "%Y-%b-%d")
+#    dt2 == datetime(2015, 3, 7, 0, 0, 0)
+
+# 3) d3: "06-Jun-2017" → format "%d-%b-%Y"
+dt3 = datetime.strptime(d3, "%d-%b-%Y")
+#    dt3 == datetime(2017, 6, 6, 0, 0, 0)
+
+# 4) d4: "August 19 (2015)" → first strip “(” and “)”, then parse "%B %d %Y"
+d4_clean = d4.replace("(", "").replace(")", "")
+dt4 = datetime.strptime(d4_clean, "%B %d %Y")
+#    dt4 == datetime(2015, 8, 19, 0, 0, 0)
+
+# 5) d5: "12/30/14" → format "%m/%d/%y"  (two-digit year → 2014)
+dt5 = datetime.strptime(d5, "%m/%d/%y")
+#    dt5 == datetime(2014, 12, 30, 0, 0, 0)
+
+# 6) t1: "1705" → format "%H%M"  (24-hour, no separators)
+time1 = datetime.strptime(t1, "%H%M").time()
+#    time1 == datetime.time(17, 5, 0)
+
+# 7) t2: "11:15:10.12 PM" → format "%I:%M:%S.%f %p"
+#    Note: “10.12” in seconds means 10 seconds + 120 000 microseconds
+dt_temp = datetime.strptime(t2, "%I:%M:%S.%f %p")
+time2 = dt_temp.time()
+#    time2 == datetime.time(23, 15, 10, 120000)
+
+# Print results to confirm
+print("d1 →", dt1)     # 2010-01-01 00:00:00
+print("d2 →", dt2)     # 2015-03-07 00:00:00
+print("d3 →", dt3)     # 2017-06-06 00:00:00
+print("d4 →", dt4)     # 2015-08-19 00:00:00
+print("d5 →", dt5)     # 2014-12-30 00:00:00
+print("t1 →", time1)   # 17:05:00
+print("t2 →", time2)   # 23:15:10.120000
+
+```
+
+Part 1 - Q7:
+
+```{python}
+flights = pd.read_csv(
+    "https://raw.githubusercontent.com/byuidatascience/data4python4ds/refs/heads/master/data-raw/flights/flights.csv"
+)
+
+```
+
+```{python}
+print(flights.columns.tolist())
+print(weather.columns.tolist())
+
+```
+
+```{python}
+# 7.1.1  Extract the "scheduled hour" from sched_dep_time
+def sched_hour(x):
+    if pd.isna(x):
+        return np.nan
+    s = f"{int(x):04d}"   # zero-pad to length 4, e.g. 530 -> "0530"
+    return int(s[:2])     # first two chars are the hour
+
+flights["sched_hour"] = flights["sched_dep_time"].apply(sched_hour)
+
+# 7.1.2  Drop any rows without a valid sched_hour or month
+flt = flights.dropna(subset=["sched_hour", "month"])
+
+# 7.1.3  Count flights by (month, sched_hour)
+month_hour = (
+    flt.groupby(["month", "sched_hour"])
+       .size()
+       .reset_index(name="n_flights")
+)
+
+# 7.1.4  Compute proportion of flights in each hour, per month
+month_hour["prop"] = (
+    month_hour.groupby("month")["n_flights"]
+              .transform(lambda x: x / x.sum())
+)
+
+# 7.1.5  Pivot to a matrix: rows = sched_hour, cols = month, values = prop
+pivot_mh = month_hour.pivot(
+    index="sched_hour", columns="month", values="prop"
+).fillna(0)
+
+# 7.1.6  Plot a heatmap of proportions (sched_hour on y-axis, month on x-axis)
+plt.figure(figsize=(8, 6))
+plt.imshow(pivot_mh, origin="lower", aspect="auto", cmap="YlGnBu")
+plt.colorbar(label="Proportion of flights")
+plt.xticks(ticks=np.arange(12), labels=np.arange(1, 13))
+plt.yticks(ticks=np.arange(24), labels=np.arange(0, 24))
+plt.xlabel("Month")
+plt.ylabel("Scheduled Departure Hour")
+plt.title("Heatmap: Scheduled Departure Hour Distribution by Month")
+plt.tight_layout()
+plt.show()
+
+# 7.1.7  Overlay line plots: one line per month
+plt.figure(figsize=(10, 4))
+for m in pivot_mh.columns:
+    plt.plot(
+        pivot_mh.index,
+        pivot_mh[m],
+        label=f"Month {m}",
+        alpha=0.7
+    )
+plt.xlabel("Hour of Day (0–23)")
+plt.ylabel("Proportion of Flights")
+plt.title("Hourly Distribution of Scheduled Departures by Month")
+plt.legend(ncol=2, bbox_to_anchor=(1.02, 1), loc="upper left", fontsize="small")
+plt.tight_layout()
+plt.show()
+
+```
+
+7.1 We see although no large difference, there are more flights departing at 4 am in Sept/Oct and Jan/Feb, less flghts departing at 2 am from Sept to Dec. Sept to Dec flight depatures from 9 am to 3 pm are split more evenly, whereas for other months there is more concentration on certain hours.
+
+```{python}
+# 7.2.1  Build a proper date column from year, month, day
+flights["date"] = pd.to_datetime(flights[["year", "month", "day"]])
+
+# 7.2.2  Extract weekday: Monday=0 … Sunday=6
+flights["weekday"] = flights["date"].dt.weekday
+
+# 7.2.3  Drop flights without dep_delay or weekday
+df_delay = flights.dropna(subset=["dep_delay", "weekday"])
+
+# 7.2.4  Compute average and median departure delay per weekday
+wk_stats = (
+    df_delay.groupby("weekday")["dep_delay"]
+            .agg(avg_delay="mean", med_delay="median")
+            .reset_index()
+)
+
+# 7.2.5  Add a “weekday_name” column for readability
+wk_stats["weekday_name"] = wk_stats["weekday"].map({
+    0: "Mon", 1: "Tue", 2: "Wed", 3: "Thu", 4: "Fri", 5: "Sat", 6: "Sun"
+})
+
+# 7.2.6  Sort by average delay
+wk_stats = wk_stats.sort_values("avg_delay").reset_index(drop=True)
+
+print(wk_stats)
+
+# 7.2.7  Plot average departure delay by weekday
+plt.figure(figsize=(6, 4))
+plt.bar(wk_stats["weekday_name"], wk_stats["avg_delay"], color="#4C72B0")
+plt.xlabel("Day of Week")
+plt.ylabel("Average Departure Delay (minutes)")
+plt.title("Average Departure Delay by Weekday")
+plt.tight_layout()
+plt.show()
+
+```
+
+7.2 Assume we want to minimize departure delay, then leave on Saturday.
+
+```{python}
+dest_counts = flights["dest"].value_counts().reset_index()
+dest_counts.columns = ["dest", "n_flights"]
+
+top10_dest_df = dest_counts.head(10)[["dest"]].copy()
+
+flights_top10 = flights.merge(top10_dest_df, on="dest", how="inner")
+
+print("7.3")
+flights_top10
+```
+
+```{python}
+# 7.4.1  Helper: extract departure hour from dep_time
+def dep_hour(x):
+    if pd.isna(x):
+        return np.nan
+    s = f"{int(x):04d}"
+    return int(s[:2])
+
+flights["dep_hour"] = flights["dep_time"].apply(dep_hour)
+
+# 7.4.2  Drop flights with missing arr_delay or dep_hour
+fh = flights.dropna(subset=["arr_delay", "dep_hour"])
+
+# 7.4.3  Group by (year, month, day, dep_hour) to compute average arrival delay
+hourly_delays = (
+    fh
+    .groupby(["year", "month", "day", "dep_hour"])["arr_delay"]
+    .agg(avg_arr_delay="mean", n_flights="size")
+    .reset_index()
+)
+
+# 7.4.4  Take the top 48 hours by average arrival delay
+top48 = hourly_delays.sort_values("avg_arr_delay", ascending=False).head(48)
+
+# 7.4.5  Aggregate weather across origins so each hour‐bin is unique
+weather_agg = (
+    weather
+    .groupby(["year", "month", "day", "hour"])
+    .agg({
+        "precip": "mean",
+        "visib": "mean",
+        "wind_speed": "mean",
+        "temp": "mean"
+    })
+    .reset_index()
+)
+
+# 7.4.6  Merge top48 with aggregated weather on matching (year, month, day, hour)
+top48_weather = top48.merge(
+    weather_agg,
+    left_on=["year", "month", "day", "dep_hour"],
+    right_on=["year", "month", "day", "hour"],
+    how="left"
+)
+
+# 7.4.7  Show results
+cols_to_show = [
+    "year", "month", "day", "dep_hour", "avg_arr_delay",
+    "precip", "visib", "wind_speed", "temp"
+]
+print(top48_weather[cols_to_show].head(10))
+print("\nDescriptive stats for weather during these top-48 hours:")
+print(top48_weather[["precip", "visib", "wind_speed"]].describe())
+```
+
+I would expect that most of these 48 “worst‐delay” hours coincide with elevated precipitation, low visibility, or high winds, confirming the expected weather‐delay patterns.
+
+Part 1 - Q8:
+
+Ans:
+1. dplyr::distinct() (or pandas’ drop_duplicates()) translates to using SELECT DISTINCT … in SQL.
+2. head(n) in dplyr or pandas—meaning “take the first n rows”—translates to a LIMIT (or vendor-specific equivalent) clause in SQL.
+
+# Part 2
+
+```{python}
+import pandas as pd
+from lets_plot import *
+
+LetsPlot.setup_html()
+
+# Loading the NBA 2019 dataset
+url = "https://raw.githubusercontent.com/dataprofessor/data/master/nba-player-stats-2019.csv"
+df = pd.read_csv(url)
+print(df.shape)
+df.head()
+```
+
+Part 2 - 1.1:
+Yes, the data is already tidy because:
+* Each row = one observation (one player‐season)
+* Each column = one variable (age, team, PTS, etc.)
+* Each cell = one value
+
+Part 2 - 1.2: The data is initially in WIDE format where there is one observation unit per row and stats are columns. We'll now convert it to LONG.
+
+```{python}
+# These columns collectively identify each player‐season:
+id_vars = ["Player"]
+
+# Everything else (all per‐game stats, percentages, etc.) we’ll treat as measurement variables:
+value_vars = [c for c in df.columns if c not in id_vars]
+
+```
+
+```{python}
+df.columns
+```
+
+```{python}
+long = df.melt(
+    id_vars=id_vars,
+    value_vars=value_vars,
+    var_name="Stat",
+    value_name="Value"
+)
+
+# Inspect the first few rows:
+long.head
+
+```
+
+Part 2 - 2.1
+
+```{python}
+df["Player"] = df["Player"].str.replace(
+    r"(\w+)$",                       # capture the final “word” (surname)
+    lambda m: m.group(1).upper(),    # replace it with its .upper() version
+    regex=True
+)
+
+df["Player"].head(5)
+```
+
+Part 2 - 2.2: N/A - The NBA data has no date/time columns
+
+Part 2 - 2.3
+
+The only “missing” (NaN) values appear in percentage columns whenever the player had zero attempts for that category. 
+
+For example: FG% (field‐goal %) is NaN if FGA (field‐goal attempts per game) = 0 (i.e., the player never attempted a field goal).
+
+Because percentages are computed as “made ÷ attempted,” a zero in the denominator produces NaN.
+
+Part 2 - 2.4
+
+```{python}
+# (1) Build two boolean masks:
+young_mask = df["Age"] < 25
+high_scoring_mask = df["PTS"] >= 20
+
+# (2) Combine them with & (AND) to get players satisfying both:
+filtered = df[ young_mask & high_scoring_mask ]
+
+
+filtered[["Player", "Age", "Tm", "PTS"]]
+
+```
+
+### References
+OpenAI. (2023). ChatGPT (June 16 version) [Large language model]. https://chat.openai.com/chat

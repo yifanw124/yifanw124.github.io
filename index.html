@@ -8,7 +8,7 @@
 
 <meta name="author" content="Yvonne Wang">
 
-<title>assignment-analyses</title>
+<title>Yvonne Wang - Assignments 1-3 Part 2 Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,10 +21,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="index_files/libs/clipboard/clipboard.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="index_files/libs/clipboard/clipboard.min.js"></script>
 <script src="index_files/libs/quarto-html/quarto.js" type="module"></script>
 <script src="index_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="index_files/libs/quarto-html/popper.min.js"></script>
@@ -35,6 +70,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="index_files/libs/bootstrap/bootstrap-8a894fcc3cb5e37eb5bf30def131be2f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 </head>
@@ -42,14 +80,22 @@ ul.task-list li input[type="checkbox"] {
 <body class="quarto-light">
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-  
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#assignment-1" id="toc-assignment-1" class="nav-link active" data-scroll-target="#assignment-1">Assignment 1</a></li>
+  <li><a href="#assignment-2" id="toc-assignment-2" class="nav-link" data-scroll-target="#assignment-2">Assignment 2</a></li>
+  <li><a href="#assignment-3" id="toc-assignment-3" class="nav-link" data-scroll-target="#assignment-3">Assignment 3</a></li>
+  </ul>
+</nav>
 </div>
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">assignment-analyses</h1>
+<h1 class="title">Yvonne Wang - Assignments 1-3 Part 2 Analysis</h1>
 </div>
 
 
@@ -72,8 +118,1996 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a Quarto website.</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="assignment-1" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-1">Assignment 1</h2>
+<div id="13fe9394" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html()</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the NBA 2019 dataset</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/dataprofessor/data/master/nba-player-stats-2019.csv"</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>nba <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>nba <span class="op">=</span> nba.dropna()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>nba.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+            <div id="4MXvb1"></div>
+            <script type="text/javascript" data-lets-plot-script="library">
+                if(!window.letsPlotCallQueue) {
+                    window.letsPlotCallQueue = [];
+                }; 
+                window.letsPlotCall = function(f) {
+                    window.letsPlotCallQueue.push(f);
+                };
+                (function() {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+                    script.onload = function() {
+                        window.letsPlotCall = function(f) {f();};
+                        window.letsPlotCallQueue.forEach(function(f) {f();});
+                        window.letsPlotCallQueue = [];
+                        
+                    };
+                    script.onerror = function(event) {
+                        window.letsPlotCall = function(f) {};    // noop
+                        window.letsPlotCallQueue = [];
+                        var div = document.createElement("div");
+                        div.style.color = 'darkred';
+                        div.textContent = 'Error loading Lets-Plot JS';
+                        document.getElementById("4MXvb1").appendChild(div);
+                    };
+                    var e = document.getElementById("4MXvb1");
+                    e.appendChild(script);
+                })()
+            </script>
+            
+</div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Player</th>
+<th data-quarto-table-cell-role="th">Pos</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Tm</th>
+<th data-quarto-table-cell-role="th">G</th>
+<th data-quarto-table-cell-role="th">GS</th>
+<th data-quarto-table-cell-role="th">MP</th>
+<th data-quarto-table-cell-role="th">FG</th>
+<th data-quarto-table-cell-role="th">FGA</th>
+<th data-quarto-table-cell-role="th">FG%</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">FT%</th>
+<th data-quarto-table-cell-role="th">ORB</th>
+<th data-quarto-table-cell-role="th">DRB</th>
+<th data-quarto-table-cell-role="th">TRB</th>
+<th data-quarto-table-cell-role="th">AST</th>
+<th data-quarto-table-cell-role="th">STL</th>
+<th data-quarto-table-cell-role="th">BLK</th>
+<th data-quarto-table-cell-role="th">TOV</th>
+<th data-quarto-table-cell-role="th">PF</th>
+<th data-quarto-table-cell-role="th">PTS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Álex Abrines</td>
+<td>SG</td>
+<td>25</td>
+<td>OKC</td>
+<td>31</td>
+<td>2</td>
+<td>19.0</td>
+<td>1.8</td>
+<td>5.1</td>
+<td>0.357</td>
+<td>...</td>
+<td>0.923</td>
+<td>0.2</td>
+<td>1.4</td>
+<td>1.5</td>
+<td>0.6</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.7</td>
+<td>5.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Quincy Acy</td>
+<td>PF</td>
+<td>28</td>
+<td>PHO</td>
+<td>10</td>
+<td>0</td>
+<td>12.3</td>
+<td>0.4</td>
+<td>1.8</td>
+<td>0.222</td>
+<td>...</td>
+<td>0.700</td>
+<td>0.3</td>
+<td>2.2</td>
+<td>2.5</td>
+<td>0.8</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>2.4</td>
+<td>1.7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Jaylen Adams</td>
+<td>PG</td>
+<td>22</td>
+<td>ATL</td>
+<td>34</td>
+<td>1</td>
+<td>12.6</td>
+<td>1.1</td>
+<td>3.2</td>
+<td>0.345</td>
+<td>...</td>
+<td>0.778</td>
+<td>0.3</td>
+<td>1.4</td>
+<td>1.8</td>
+<td>1.9</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.8</td>
+<td>1.3</td>
+<td>3.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Steven Adams</td>
+<td>C</td>
+<td>25</td>
+<td>OKC</td>
+<td>80</td>
+<td>80</td>
+<td>33.4</td>
+<td>6.0</td>
+<td>10.1</td>
+<td>0.595</td>
+<td>...</td>
+<td>0.500</td>
+<td>4.9</td>
+<td>4.6</td>
+<td>9.5</td>
+<td>1.6</td>
+<td>1.5</td>
+<td>1.0</td>
+<td>1.7</td>
+<td>2.6</td>
+<td>13.9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Bam Adebayo</td>
+<td>C</td>
+<td>21</td>
+<td>MIA</td>
+<td>82</td>
+<td>28</td>
+<td>23.3</td>
+<td>3.4</td>
+<td>5.9</td>
+<td>0.576</td>
+<td>...</td>
+<td>0.735</td>
+<td>2.0</td>
+<td>5.3</td>
+<td>7.3</td>
+<td>2.2</td>
+<td>0.9</td>
+<td>0.8</td>
+<td>1.5</td>
+<td>2.5</td>
+<td>8.9</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 29 columns</p>
+</div>
+</div>
+</div>
+<div id="8fdae9ff" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>ggplot(nba, aes(x<span class="op">=</span><span class="st">'PTS'</span>, y<span class="op">=</span><span class="st">'AST'</span>, size<span class="op">=</span><span class="st">'TRB'</span>, color<span class="op">=</span><span class="st">'Pos'</span>)) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    geom_point(alpha<span class="op">=</span><span class="fl">0.7</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    ggtitle(<span class="st">"Points vs Assists (size = Rebounds, color = Position)"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># RELATIONSHIP:</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Points and Assists have a positive correlation</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Rebound size is higher for forwards/centers</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Guards (G) typically assist more</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+   <div id="Pymz6K"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("Pymz6K");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"Pos":["SG","PF","PG","C","C","SF","SG","C","SG","SG","C","SG","PF","SF","SF","PF","PF","PF","C","PF","PF","PF","SF","PG","SF","SF","SF","PG","C","SG","PF","SG","SG","SG","PG","PG","C","PG","PF-SF","PF","SF","SF","SF","SF","PG","C","SG","SG","SG","PF","SG","C","SG","PF","SG","PF","PG","C","C","PF","SG","PG","SF","SG","SF","C","PF","PG","SG","PF","SG","SG","SG","C","SF","SF","SF","SF","SF","PG","SG","SG","SF","SG","SG","SG","PG","SG","SF","PG","C","SG","SG","SG","PG","PG","PG","SG","SG","SG","SG","SG","SF-SG","SG","SF","SF","PG","SG","PG","PG","PG","PG","C","PF","PG","PF","C","PG","PG","PG","PG","SF","C","PG","PF","C","C","C","PF-SF","PF","SF","PG","PG","PF","PF","PF","PF","SG","SG","PF","C","PG","SF","PG","SG","PG","C","SF","SF","SF","SG","SF","SG","SF","SF","SF","SF","PF","SG","PG","SG","C","C","C","C","C","PF","PF","PF","C","PG","PG","PG","SF","SG","PF","PF","SG","C","PG","SG","SG","SG","SG","SG","SG","SG","PG","C","PF","PG","SF","PG","SF","PF","PF","PF","SG","SG","SG","C","SF","SF","SF","PF","SG","PG","PG","PG","SG","PG","C","C","C","C","C","PG","SG","PG","SF","SG","SG","PG","SG","PG","PG","PG","SG","C","SG","SF","SG","SG","C","C","C","C","C","C","PF","SF","PF","PF","PG","C","PG","PF","SG","C","PG","SG","PF","PG","SF","SG","PF","SG","PF","PF","PF","PF","PF","SG","SG","SG","SG","SG","PG","SF","C","PG","SG","SG","PF","PF","PF","PG","PG","PG","PG","SG","SG","PF","C","PF","C","PF","C","SF","PF","SG","SF","C","PG","PG","PG","SF","PG","SG","SG","SG","SG","SF","SF","C","SG","SG","SG","C","SF","C","SG","C","SG","SF","C","SF","PF","PF","SG","SF","PG","PF","SF","PG","PG","PF","SG","SF","SF","SF","PG","SF","PF","SG","SG","SG","PF","PF","C","SF","SF","SF","PF","SF","SF","SF","PG","PG","PG","SF","SF","SF","C","C","SF","SF","SF","PF","PG","C","C","C","PG","C","C","C","C","SG","PF","SF","PF","PG","PG","PG","PF","SG","PF","SG-PF","PF","SG","C","SF","PF","PF","PF","PF","SG","SG","SF","PF","SG","SG","SG","SG","PG","C","SF","C","PF","SF","PG","PG","PG","PG","PG","SG","C","C","C","PF","PG","PG","PG","SF","SF","SF","PF","PF","PG","PG","PG","PG","SG","SG","C","C-PF","C","PF","C","C","C","PF","PF","PG","PF","SF-SG","SF","SG","SG","PF","SG","SG","SG","SG","SG","PG","SF","C","SG","SF","SG","SG","SG","C","PG","PF","SF","SF","SF","SF","SF","SF","PG","PF","SG","PF","PF","PF","SG","SG","SG","C","C","C","C","SG","PF","PF","PF","SG","PF","PF","PF","PF","PG","PF","PF","PG","PG","SG","PF","PF","PF","SF","SF","SF","SF","C","PG","PG","PF","C","C","PF","PG","SF","SF","SF","C","SG","SF","C","PF","C","PG","SG","SG","PF","SF","SF","SF","SF","C","PF","PF","PF","PG","SF","PF","C","PG","PG","PG","PG","PG","PG","SG","C","C","C","SF","SF","SF","SF","PF","PF","PF","C","SG","PF","PF","PF","PG","PF","SG","SG","SG","SG","SG","SG","SG","SG","SF","PF","SF","SG","C","PG","PG","SG","PG","PG","PG","C","SG","SF","PF","PF","PF","PG","PG","PF","PF","PF","SF","SG","SG","SG","PG","SG","SG","SG","SG","SG","SG","PF","SG","PG","SG-SF","SG","SF","PG","SG","SG","PG","PG","PG","PG","SG","PF-C","C","PF","C","SG","SF","PF","PF","PF","PF","SG","SG","SG","SG","SG","PG","PF","PF","PF","SF","PG","SG","SG","SG","PG","SG","PF","PF","PF","C","SG","SG","PF","SG","C","SG","PF","C","SG","SG","PF","PG","C","C","PG","C","C","C","PF","PG","PF","C","SG","C","SG","PG","SG","PG","PG","SF","PG","SF","SF","SF","C","PG","PG","PF","C","SF","PF","SG","C","SF","SG","PF","C","SF","PF","SF","PF","PF","PF","PG","PG","PG","PF","SG","PF","PG","C","C","C","C","C","C","C","C"],
+"TRB":[1.5,2.5,1.8,9.5,7.3,1.0,0.6,9.2,2.6,0.6,8.4,2.7,7.5,1.8,5.8,2.2,3.0,0.9,1.0,12.5,0.5,5.4,2.9,2.7,5.4,5.6,5.3,2.5,10.3,2.1,7.6,0.7,0.6,1.0,0.9,5.3,5.0,2.5,4.7,4.2,5.5,4.6,2.8,5.2,1.8,4.7,3.9,5.0,2.5,2.3,2.5,2.7,4.4,4.0,0.8,3.5,5.0,3.8,4.6,5.8,1.9,4.6,3.6,3.5,4.1,5.0,3.8,1.1,4.1,2.0,2.8,2.7,3.1,5.0,2.5,2.4,2.5,3.2,4.0,1.9,1.5,4.5,1.7,1.6,2.5,4.2,1.2,3.2,2.8,2.3,6.3,2.7,2.8,2.6,1.7,1.9,1.5,3.7,1.6,5.5,1.7,0.9,5.3,5.2,5.3,4.6,1.2,2.9,1.9,2.6,0.7,1.0,12.7,5.2,1.7,2.6,7.0,2.5,0.8,4.8,2.7,3.2,8.4,0.8,0.7,5.6,5.6,5.6,4.2,4.7,3.1,0.0,0.6,3.3,1.8,4.2,2.3,1.5,3.3,9.8,4.2,3.1,3.8,3.4,4.2,2.1,8.2,5.5,5.2,5.7,3.4,3.5,1.3,2.4,2.5,2.0,4.8,2.9,1.6,5.3,1.4,12.0,4.0,8.6,1.0,7.5,3.1,3.7,3.0,2.0,1.6,0.8,1.9,3.3,6.0,1.2,5.2,1.9,4.1,2.4,2.4,7.8,2.4,1.6,3.3,3.6,2.8,3.1,15.6,2.6,4.1,6.4,0.3,1.0,3.5,4.5,3.4,2.0,1.9,2.1,13.6,3.1,2.9,3.6,1.5,0.8,1.5,1.7,0.0,2.9,1.6,6.8,3.7,8.2,7.4,3.6,1.0,1.9,1.5,4.8,2.9,3.2,3.8,0.5,2.8,2.9,2.6,1.2,1.4,3.7,6.1,2.1,0.8,7.9,8.6,6.6,4.6,4.7,3.3,6.8,8.2,6.5,3.8,2.8,12.9,0.2,7.4,2.2,5.6,1.4,3.1,5.2,1.6,0.0,4.0,7.3,2.5,6.3,6.1,6.5,4.0,7.5,2.5,0.5,3.4,3.5,3.2,6.6,4.5,6.5,1.6,2.8,3.8,7.9,7.9,7.9,1.2,0.0,1.5,0.8,3.0,3.7,1.7,2.7,4.5,5.1,3.8,5.4,4.1,2.3,5.0,1.0,2.9,2.5,2.1,2.6,3.0,1.3,5.0,3.9,4.4,3.5,0.0,5.3,4.7,2.2,2.5,1.7,6.7,3.6,9.2,3.3,2.2,3.0,4.2,8.1,3.7,4.5,4.0,0.5,5.1,5.0,5.5,2.7,0.5,2.2,4.7,4.4,2.6,2.8,2.3,2.6,8.5,1.8,1.4,0.3,1.6,3.9,1.4,2.9,1.1,1.3,0.0,3.2,3.3,3.6,2.3,3.0,2.8,4.0,1.9,2.1,1.5,10.8,3.1,4.0,2.1,8.2,2.0,2.0,13.1,13.7,11.4,3.4,3.5,9.8,10.5,8.6,2.9,3.8,1.0,4.6,1.5,0.8,1.9,4.5,2.2,2.9,2.3,1.8,2.5,4.2,3.9,5.5,2.0,1.8,2.1,5.5,4.7,3.1,2.2,1.6,2.3,1.2,2.0,4.5,5.5,7.3,3.8,2.4,3.8,4.6,2.4,2.3,2.6,1.8,0.0,5.2,4.9,3.9,10.9,4.8,0.8,3.0,1.9,0.9,2.7,0.7,3.8,0.0,1.8,1.9,0.5,1.5,1.5,3.8,3.2,2.7,3.7,4.6,4.2,5.1,9.0,1.7,1.1,1.5,2.5,2.3,1.5,2.8,1.8,1.0,1.7,1.0,1.7,4.0,2.3,1.4,7.5,3.6,3.4,0.9,1.5,1.5,3.6,2.7,1.2,6.0,1.8,1.7,2.1,1.9,0.5,2.2,7.2,1.8,7.4,8.3,5.4,4.1,0.4,1.9,4.0,4.1,1.5,4.3,2.4,4.0,3.0,4.3,1.3,6.1,4.6,5.1,3.8,2.4,1.0,2.3,3.3,4.2,0.6,3.8,4.3,2.6,0.9,0.9,0.7,1.9,8.2,1.8,1.7,1.5,5.7,4.2,3.1,2.0,0.3,0.3,0.5,10.4,3.2,3.5,2.6,1.5,4.7,1.8,2.9,5.6,4.7,4.7,4.7,4.4,4.9,3.9,6.6,6.2,7.2,1.5,2.8,2.3,2.0,4.6,1.8,1.7,2.1,5.2,0.7,2.0,6.4,2.2,5.3,0.9,5.6,5.6,5.5,8.1,7.3,8.6,5.3,2.3,3.6,0.0,4.2,1.1,8.7,2.4,0.6,1.6,3.6,0.6,2.1,2.4,1.9,2.9,1.3,1.5,1.2,6.4,5.3,2.7,3.5,3.9,3.6,3.9,9.3,1.1,8.0,5.6,6.6,5.5,3.5,3.6,3.5,3.3,3.8,2.5,2.4,1.4,3.2,2.9,1.7,1.4,2.2,3.0,3.1,2.7,6.9,0.0,8.8,2.3,2.4,1.7,0.0,0.7,2.9,2.9,3.0,2.8,2.6,1.6,2.6,3.1,1.8,2.0,2.2,2.1,3.4,0.0,3.7,4.2,1.9,1.8,2.0,0.0,3.2,1.0,3.0,2.9,4.0,6.0,2.5,2.9,3.1,2.5,1.1,0.4,2.3,3.0,1.0,3.4,1.1,0.8,2.5,3.8,10.2,0.7,2.7,12.4,0.7,3.1,5.8,4.5,7.2,1.8,0.0,8.6,7.2,10.7,1.4,2.6,7.8,12.0,4.0,2.0,2.6,4.4,1.0,3.6,1.6,3.6,1.1,4.0,2.3,2.1,0.4,11.1,3.7,0.7,11.3,4.8,3.8,0.5,4.1,4.8,3.0,5.4,2.5,2.8,4.6,5.4,4.0,1.5,7.9,3.5,2.6,5.4,1.3,0.3,6.5,3.7,6.8,4.0,3.0,4.5,5.4,6.1,4.9,7.7],
+"AST":[0.6,0.8,1.9,1.6,2.2,0.3,0.9,2.4,1.3,0.7,1.4,4.0,1.3,0.5,3.0,0.8,1.1,0.2,0.3,5.9,0.0,0.5,0.7,3.3,3.7,3.3,3.8,5.3,1.8,1.1,1.0,1.0,1.2,0.5,0.8,5.4,0.8,5.6,1.5,1.3,1.9,2.9,0.6,3.3,3.5,1.1,2.3,5.5,1.2,1.0,1.7,1.1,2.5,1.2,0.8,1.3,3.8,0.8,0.6,1.9,0.7,5.5,0.5,3.8,2.0,1.0,0.9,0.7,6.8,0.1,2.4,2.0,4.0,0.3,1.3,1.4,1.2,2.1,1.2,2.2,0.5,3.2,0.9,0.9,1.2,1.4,1.1,1.4,1.5,3.2,1.3,2.0,2.5,1.1,2.7,2.8,2.6,2.0,1.2,2.9,0.8,0.3,4.0,4.3,4.0,1.5,2.3,1.3,2.8,3.3,2.7,0.8,1.4,1.3,1.8,1.1,1.8,2.5,1.3,4.1,3.1,0.7,2.4,1.0,0.1,0.7,0.9,0.6,1.6,2.0,0.7,1.0,0.6,0.5,0.4,0.6,0.4,1.6,2.4,2.0,0.9,6.0,0.4,6.4,2.0,1.6,3.6,1.3,1.1,1.5,1.1,1.0,3.6,1.2,1.3,1.0,1.7,0.8,0.9,5.2,0.5,3.9,0.6,0.8,0.0,1.4,1.0,1.0,1.0,0.0,3.8,2.4,4.2,0.8,6.2,0.1,0.5,0.3,0.9,4.6,1.1,6.0,1.2,0.6,1.9,1.8,0.8,4.8,1.4,1.4,6.0,5.9,0.7,0.0,0.8,0.5,0.9,1.4,1.2,1.5,3.7,0.7,0.7,0.8,0.3,0.8,1.3,1.4,0.0,2.4,2.6,0.5,0.2,0.7,1.2,0.6,1.6,1.0,1.9,1.2,2.1,3.6,7.3,0.1,4.2,4.4,3.5,1.3,0.6,3.1,2.6,1.1,1.8,4.4,4.7,3.9,1.7,1.9,0.7,2.6,4.1,1.2,1.5,3.3,2.0,0.9,3.7,1.9,1.4,2.6,1.0,1.0,2.6,0.0,1.6,6.9,0.5,0.8,0.9,0.6,1.8,5.4,1.2,2.5,2.4,2.7,1.9,7.5,1.2,2.0,1.8,2.2,2.4,2.8,2.7,2.9,1.4,0.0,1.7,1.2,1.9,1.4,0.5,0.2,3.4,1.0,0.8,1.0,1.5,0.7,2.5,0.4,0.6,2.3,2.8,2.1,1.3,1.7,7.7,1.8,2.2,1.4,0.0,1.6,0.9,1.8,2.0,1.3,4.2,1.0,0.4,2.9,0.0,3.0,0.8,1.3,3.2,0.8,5.7,0.0,3.0,6.9,1.1,1.1,0.8,1.1,1.1,2.3,1.2,1.3,1.0,4.2,8.3,0.3,0.8,0.3,1.0,1.3,0.1,1.2,0.0,0.0,0.0,2.5,1.3,1.3,1.6,2.9,2.5,4.2,0.6,0.6,0.6,7.3,1.2,0.6,0.4,2.2,0.0,4.8,2.3,2.0,3.0,3.9,1.3,1.7,1.9,1.4,1.8,1.0,0.0,1.0,1.8,0.8,2.3,1.1,1.1,1.2,1.2,1.1,1.2,0.9,0.8,2.5,0.5,0.5,0.6,2.2,4.5,0.7,0.4,1.1,1.3,1.0,0.4,5.0,1.1,3.3,1.2,0.3,3.9,6.9,3.1,3.5,2.2,1.8,0.0,1.5,1.2,1.2,2.2,8.7,0.5,1.0,0.5,0.2,0.8,0.2,1.4,0.8,3.2,3.4,0.3,0.9,1.0,0.7,0.7,0.5,0.9,0.9,0.6,1.5,1.4,0.4,2.2,0.0,2.3,2.3,2.5,2.4,0.5,0.0,1.0,0.7,1.0,3.0,3.4,0.9,0.7,1.7,0.4,0.2,1.1,1.0,1.0,3.2,0.4,4.3,0.7,0.6,1.1,2.1,0.1,3.0,2.0,0.9,1.2,1.1,1.4,4.2,1.1,1.6,0.6,0.4,0.5,2.3,1.9,0.8,0.0,1.0,1.0,1.5,1.4,1.8,0.8,3.6,0.3,0.5,3.9,4.8,0.2,1.2,1.3,0.8,0.9,0.8,1.3,0.3,3.2,2.6,2.5,0.6,2.1,0.6,0.7,2.8,0.5,0.4,1.0,3.2,1.1,1.5,1.2,0.4,0.7,2.4,1.2,5.2,1.8,2.6,1.2,0.7,1.6,1.3,2.4,2.2,2.7,3.7,1.7,0.5,1.0,8.2,2.7,2.7,2.6,7.6,1.3,1.2,3.0,0.9,1.2,0.5,2.1,2.0,2.7,1.4,1.3,1.5,1.5,1.5,0.8,0.0,1.1,2.0,3.1,2.7,0.3,0.7,4.1,0.0,2.2,2.0,2.3,0.9,0.3,0.4,0.6,0.6,8.0,4.3,1.7,2.9,6.1,7.0,2.9,0.7,1.0,1.6,2.0,1.5,5.0,4.1,0.8,0.8,0.8,0.5,1.5,1.1,1.7,3.0,1.5,1.1,2.3,1.8,2.2,1.1,3.1,0.0,7.7,2.3,2.3,2.2,0.0,0.7,4.0,4.8,4.3,5.4,3.6,1.9,0.7,1.0,0.2,0.5,1.7,0.9,0.4,0.0,0.4,1.0,1.2,1.4,0.8,0.0,2.1,0.4,0.5,0.4,1.3,2.1,8.2,1.4,1.4,1.4,2.1,0.9,0.7,0.5,1.0,1.0,1.9,0.3,0.6,2.4,2.0,0.3,0.7,3.4,0.3,1.9,1.2,3.9,1.6,0.5,0.0,1.4,1.0,2.2,0.2,4.8,1.9,3.8,4.2,0.6,2.8,5.9,0.5,8.7,0.7,2.1,1.6,1.5,0.8,0.5,0.5,10.7,3.9,0.0,0.8,2.5,0.6,0.8,0.5,1.8,5.4,1.2,0.2,0.5,1.1,4.3,0.4,0.2,0.8,3.3,2.2,5.3,0.4,0.5,2.5,8.1,2.1,0.7,0.5,0.8,0.9,1.1,0.8,1.5],
+"PTS":[5.3,1.7,3.2,13.9,8.9,1.7,1.0,21.3,3.7,5.6,10.9,9.9,9.4,3.7,8.0,2.5,3.7,0.7,0.0,27.7,1.0,13.4,7.0,6.7,12.5,9.9,14.1,11.7,16.3,7.3,14.9,0.9,1.3,0.0,1.9,9.9,6.2,10.9,16.4,17.7,14.3,11.5,5.0,9.3,6.1,5.6,11.6,25.6,11.3,7.0,10.5,3.3,8.4,5.0,2.8,8.0,7.6,4.8,4.4,9.6,7.3,15.9,4.2,14.1,18.0,3.5,4.7,0.9,26.6,3.3,9.9,8.2,16.1,5.7,4.9,7.6,4.1,8.3,7.5,3.5,4.0,15.6,7.5,6.6,4.3,13.0,2.1,6.4,4.8,9.3,10.5,11.3,12.1,9.3,10.9,11.8,9.7,8.8,8.4,11.6,1.7,2.6,18.7,21.3,18.2,8.3,2.3,11.4,6.0,7.5,4.7,1.5,16.6,11.1,4.4,7.4,10.3,4.8,4.3,5.4,9.2,6.3,11.9,2.5,0.8,3.1,3.7,3.1,6.0,6.7,4.3,2.0,0.9,4.2,1.8,5.7,2.9,6.7,16.8,19.5,6.6,11.2,4.9,21.1,6.9,6.9,16.3,13.3,11.3,14.5,9.6,5.7,7.9,4.2,3.8,6.0,11.9,3.0,7.9,27.3,6.2,25.9,4.0,5.8,0.0,10.8,6.1,6.3,6.1,1.5,5.9,1.7,7.3,7.1,21.2,4.2,6.0,3.7,6.4,16.8,4.9,21.2,6.2,3.3,9.8,10.7,3.2,13.7,17.3,4.9,11.3,26.0,1.7,1.5,6.0,6.0,6.0,10.3,8.4,12.0,27.5,6.7,7.4,5.3,1.8,1.3,0.8,0.9,0.0,10.2,6.9,10.4,5.1,12.9,11.8,4.0,4.3,6.9,5.9,7.5,11.8,15.1,17.3,1.5,5.3,5.0,6.3,3.7,3.6,8.2,19.8,8.4,6.5,13.6,15.7,9.1,3.9,4.2,1.3,13.7,28.0,10.8,7.0,10.8,15.9,1.4,16.0,16.2,5.0,4.7,5.3,13.6,4.2,0.0,10.3,7.4,9.2,9.4,9.8,8.7,12.3,24.5,3.0,4.0,18.1,19.1,15.5,36.1,7.7,16.6,6.3,12.9,13.7,20.0,20.9,18.2,3.2,2.0,4.3,1.5,6.5,7.8,1.9,2.5,11.5,5.6,5.8,7.3,8.8,4.0,20.7,1.8,3.6,7.6,10.8,6.8,4.3,5.9,21.2,10.5,11.6,9.5,0.0,8.9,8.2,11.2,12.2,9.6,13.6,9.4,12.8,9.7,3.0,17.0,5.2,15.0,5.7,6.8,12.1,0.0,18.3,23.8,9.6,5.0,3.7,8.1,13.8,11.5,7.2,6.7,8.2,15.4,27.4,2.3,4.7,1.5,5.2,6.3,0.9,3.9,3.3,3.5,2.0,7.8,6.9,7.5,5.3,10.9,10.8,11.1,3.4,3.7,2.8,20.1,5.4,7.0,5.1,4.5,1.0,6.9,11.0,11.0,10.9,6.5,8.6,13.7,14.0,13.1,9.7,6.7,0.0,6.8,6.8,3.0,8.5,12.8,5.8,7.0,8.6,6.8,9.1,3.7,8.5,18.7,3.0,2.8,3.4,15.3,23.7,7.6,3.9,4.0,4.7,3.6,4.9,14.3,11.1,26.6,5.9,3.8,13.7,25.8,9.6,10.7,7.0,4.0,0.0,6.3,12.5,9.5,17.0,14.2,2.4,2.0,4.6,1.7,6.8,0.9,8.5,2.5,7.5,7.9,2.3,3.6,3.0,4.1,5.0,4.7,5.5,7.3,6.7,8.2,18.7,2.7,5.1,1.0,12.2,13.1,7.0,10.9,5.0,4.0,2.6,1.7,2.7,21.0,6.4,7.3,12.0,7.6,4.7,3.9,5.9,6.4,3.9,5.0,1.8,18.3,6.4,5.5,9.3,8.2,3.5,9.9,12.6,4.4,15.2,16.7,11.6,23.8,1.1,8.9,5.3,4.8,3.0,13.7,11.9,1.4,0.0,1.8,2.5,13.9,9.4,11.5,6.5,10.4,2.0,4.6,14.8,18.2,2.1,7.0,7.4,5.9,3.2,3.3,2.0,4.0,9.4,9.4,5.3,4.0,7.1,4.9,7.3,5.7,2.4,2.1,4.5,15.6,6.5,5.2,3.5,3.3,8.2,5.7,7.7,18.8,10.0,13.0,15.2,12.9,16.9,3.9,14.5,14.3,15.0,9.5,7.5,3.6,1.7,15.6,6.3,5.7,8.2,10.6,3.7,4.5,7.8,4.4,5.5,1.8,13.9,12.6,17.5,14.2,14.1,14.3,10.6,8.6,5.1,2.0,5.8,5.5,21.4,18.1,1.2,5.0,16.6,1.4,8.1,7.2,8.7,6.7,3.3,4.2,3.4,7.3,9.2,18.0,15.1,9.0,12.7,21.1,14.1,5.1,20.0,10.6,11.1,10.5,8.9,15.5,5.8,4.8,7.8,3.8,6.9,5.4,8.0,16.7,9.1,8.3,10.9,7.5,8.9,4.6,16.9,3.0,16.9,6.5,6.9,5.5,0.0,3.8,8.9,13.6,12.9,14.7,8.9,6.7,3.3,3.7,2.2,4.0,6.7,6.0,3.9,0.0,4.2,5.9,5.9,6.1,5.5,2.0,7.2,2.9,2.0,1.9,2.7,15.7,12.1,7.8,9.4,4.7,3.2,2.2,3.3,4.5,1.0,5.7,8.1,2.3,4.5,21.5,10.9,1.0,5.0,24.4,2.7,10.9,7.3,6.8,13.3,2.3,0.0,15.6,12.8,19.9,1.4,11.0,8.4,20.8,15.0,4.8,12.0,25.6,2.6,20.7,3.5,13.5,3.9,18.0,2.2,2.6,1.6,22.9,9.9,0.0,12.3,18.1,3.6,2.6,6.5,6.1,20.0,10.1,2.5,5.3,5.8,12.6,8.2,2.8,16.9,8.7,6.9,12.2,2.3,2.3,12.6,19.1,10.1,7.7,0.0,11.5,7.8,8.9,8.5,9.4]
+},
+"mapping":{
+"x":"PTS",
+"y":"AST",
+"size":"TRB",
+"color":"Pos"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"Player"
+},{
+"type":"str",
+"column":"Pos"
+},{
+"type":"int",
+"column":"Age"
+},{
+"type":"str",
+"column":"Tm"
+},{
+"type":"int",
+"column":"G"
+},{
+"type":"int",
+"column":"GS"
+},{
+"type":"float",
+"column":"MP"
+},{
+"type":"float",
+"column":"FG"
+},{
+"type":"float",
+"column":"FGA"
+},{
+"type":"float",
+"column":"FG%"
+},{
+"type":"float",
+"column":"3P"
+},{
+"type":"float",
+"column":"3PA"
+},{
+"type":"float",
+"column":"3P%"
+},{
+"type":"float",
+"column":"2P"
+},{
+"type":"float",
+"column":"2PA"
+},{
+"type":"float",
+"column":"2P%"
+},{
+"type":"float",
+"column":"eFG%"
+},{
+"type":"float",
+"column":"FT"
+},{
+"type":"float",
+"column":"FTA"
+},{
+"type":"float",
+"column":"FT%"
+},{
+"type":"float",
+"column":"ORB"
+},{
+"type":"float",
+"column":"DRB"
+},{
+"type":"float",
+"column":"TRB"
+},{
+"type":"float",
+"column":"AST"
+},{
+"type":"float",
+"column":"STL"
+},{
+"type":"float",
+"column":"BLK"
+},{
+"type":"float",
+"column":"TOV"
+},{
+"type":"float",
+"column":"PF"
+},{
+"type":"float",
+"column":"PTS"
+}]
+},
+"ggtitle":{
+"text":"Points vs Assists (size = Rebounds, color = Position)"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"alpha":0.7,
+"data":{
+}
+}],
+"metainfo_list":[],
+"spec_id":"5"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script>
+</div>
+</div>
+<div id="3d9e3599" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>ggplot(nba, aes(x<span class="op">=</span><span class="st">'Pos'</span>, y<span class="op">=</span><span class="st">'AST'</span>)) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    geom_boxplot(fill<span class="op">=</span><span class="st">'lightblue'</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    ggtitle(<span class="st">"Assists Distribution by Position"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+   <div id="wFMRyn"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("wFMRyn");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"mapping":{
+"x":"Pos",
+"y":"AST"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"Player"
+},{
+"type":"str",
+"column":"Pos"
+},{
+"type":"int",
+"column":"Age"
+},{
+"type":"str",
+"column":"Tm"
+},{
+"type":"int",
+"column":"G"
+},{
+"type":"int",
+"column":"GS"
+},{
+"type":"float",
+"column":"MP"
+},{
+"type":"float",
+"column":"FG"
+},{
+"type":"float",
+"column":"FGA"
+},{
+"type":"float",
+"column":"FG%"
+},{
+"type":"float",
+"column":"3P"
+},{
+"type":"float",
+"column":"3PA"
+},{
+"type":"float",
+"column":"3P%"
+},{
+"type":"float",
+"column":"2P"
+},{
+"type":"float",
+"column":"2PA"
+},{
+"type":"float",
+"column":"2P%"
+},{
+"type":"float",
+"column":"eFG%"
+},{
+"type":"float",
+"column":"FT"
+},{
+"type":"float",
+"column":"FTA"
+},{
+"type":"float",
+"column":"FT%"
+},{
+"type":"float",
+"column":"ORB"
+},{
+"type":"float",
+"column":"DRB"
+},{
+"type":"float",
+"column":"TRB"
+},{
+"type":"float",
+"column":"AST"
+},{
+"type":"float",
+"column":"STL"
+},{
+"type":"float",
+"column":"BLK"
+},{
+"type":"float",
+"column":"TOV"
+},{
+"type":"float",
+"column":"PF"
+},{
+"type":"float",
+"column":"PTS"
+}]
+},
+"ggtitle":{
+"text":"Assists Distribution by Position"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"boxplot",
+"mapping":{
+},
+"data_meta":{
+},
+"fill":"lightblue",
+"data":{
+"..middle..":[1.4,1.0,2.9,1.1,1.1,1.55,3.15,1.2,0.7,2.3,0.7],
+"..lower..":[0.9,0.5,1.8,0.7,0.6,1.55,3.15,1.2,0.7,2.3,0.7],
+"..upper..":[2.25,1.4,4.35,1.8,1.95,1.55,3.15,1.2,0.7,2.3,0.7],
+"..ymin..":[0.0,0.0,0.0,0.0,0.0,1.55,3.15,1.2,0.7,2.3,0.7],
+"..ymax..":[4.2,2.7,8.1,3.4,3.9,1.55,3.15,1.2,0.7,2.3,0.7],
+"Pos":["SG","PF","PG","C","SF","PF-SF","SF-SG","SG-PF","C-PF","SG-SF","PF-C"]
+}
+},{
+"geom":"point",
+"stat":"boxplot_outlier",
+"mapping":{
+},
+"show_legend":false,
+"data_meta":{
+},
+"fill":"lightblue",
+"data":{
+"..middle..":[1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,1.0,2.9,2.9,2.9,2.9,2.9,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.1,1.55,1.55,3.15,3.15,1.2,0.7,2.3,0.7],
+"..lower..":[0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.9,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1.8,1.8,1.8,1.8,1.8,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.7,0.6,0.6,0.6,0.6,0.6,0.6,1.55,1.55,3.15,3.15,1.2,0.7,2.3,0.7],
+"..upper..":[2.25,2.25,2.25,2.25,2.25,2.25,2.25,2.25,2.25,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,1.4,4.35,4.35,4.35,4.35,4.35,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.8,1.95,1.95,1.95,1.95,1.95,1.95,1.55,1.55,3.15,3.15,1.2,0.7,2.3,0.7],
+"..ymin..":[0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.55,1.55,3.15,3.15,1.2,0.7,2.3,0.7],
+"..ymax..":[4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.2,4.2,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,2.7,8.1,8.1,8.1,8.1,8.1,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.4,3.9,3.9,3.9,3.9,3.9,3.9,1.55,1.55,3.15,3.15,1.2,0.7,2.3,0.7],
+"Pos":["SG","SG","SG","SG","SG","SG","SG","SG","SG","PF","PF","PF","PF","PF","PF","PF","PF","PF","PF","PG","PG","PG","PG","PG","C","C","C","C","C","C","C","C","C","SF","SF","SF","SF","SF","SF","PF-SF","PF-SF","SF-SG","SF-SG","SG-PF","C-PF","SG-SF","PF-C"],
+"AST":[5.5,6.8,4.3,6.2,6.0,7.7,4.5,5.2,5.4,5.9,3.7,6.9,5.4,2.8,2.9,3.4,5.7,3.1,3.1,8.7,8.2,8.2,8.7,10.7,3.6,3.9,3.7,4.4,4.7,3.9,4.2,7.3,3.8,4.0,5.9,4.1,8.3,4.3,4.3,1.5,1.6,4.0,2.3,NaN,NaN,NaN,NaN]
+}
+}],
+"metainfo_list":[],
+"spec_id":"6"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script>
+</div>
+</div>
+<div id="0e1c5014" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>ggplot(nba, aes(x<span class="op">=</span><span class="st">'PTS'</span>)) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    geom_histogram(binwidth<span class="op">=</span><span class="dv">2</span>, fill<span class="op">=</span><span class="st">'orange'</span>, color<span class="op">=</span><span class="st">'black'</span>) <span class="op">+</span> <span class="op">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    ggtitle(<span class="st">"Distribution of Points Per Game"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+   <div id="IhFpuc"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("IhFpuc");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+},
+"mapping":{
+"x":"PTS"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"Player"
+},{
+"type":"str",
+"column":"Pos"
+},{
+"type":"int",
+"column":"Age"
+},{
+"type":"str",
+"column":"Tm"
+},{
+"type":"int",
+"column":"G"
+},{
+"type":"int",
+"column":"GS"
+},{
+"type":"float",
+"column":"MP"
+},{
+"type":"float",
+"column":"FG"
+},{
+"type":"float",
+"column":"FGA"
+},{
+"type":"float",
+"column":"FG%"
+},{
+"type":"float",
+"column":"3P"
+},{
+"type":"float",
+"column":"3PA"
+},{
+"type":"float",
+"column":"3P%"
+},{
+"type":"float",
+"column":"2P"
+},{
+"type":"float",
+"column":"2PA"
+},{
+"type":"float",
+"column":"2P%"
+},{
+"type":"float",
+"column":"eFG%"
+},{
+"type":"float",
+"column":"FT"
+},{
+"type":"float",
+"column":"FTA"
+},{
+"type":"float",
+"column":"FT%"
+},{
+"type":"float",
+"column":"ORB"
+},{
+"type":"float",
+"column":"DRB"
+},{
+"type":"float",
+"column":"TRB"
+},{
+"type":"float",
+"column":"AST"
+},{
+"type":"float",
+"column":"STL"
+},{
+"type":"float",
+"column":"BLK"
+},{
+"type":"float",
+"column":"TOV"
+},{
+"type":"float",
+"column":"PF"
+},{
+"type":"float",
+"column":"PTS"
+}]
+},
+"ggtitle":{
+"text":"Distribution of Points Per Game"
+},
+"kind":"plot",
+"scales":[],
+"layers":[{
+"geom":"histogram",
+"mapping":{
+},
+"data_meta":{
+},
+"binwidth":2.0,
+"fill":"orange",
+"color":"black",
+"data":{
+"..count..":[15.0,78.0,113.0,118.0,106.0,67.0,62.0,47.0,28.0,28.0,13.0,14.0,6.0,5.0,7.0,0.0,0.0,0.0,1.0,0.0],
+"PTS":[-0.3999999999999999,1.6,3.6,5.6,7.6,9.6,11.6,13.6,15.6,17.6,19.6,21.6,23.6,25.6,27.6,29.6,31.6,33.6,35.6,37.6]
+}
+}],
+"metainfo_list":[],
+"spec_id":"7"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script>
+</div>
+</div>
+<div id="8fede473" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Question: Who are the top 5 scoring guards with &gt;5 assists/game?</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>top_guards <span class="op">=</span> (</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    nba[[<span class="st">'Player'</span>, <span class="st">'Pos'</span>, <span class="st">'PTS'</span>, <span class="st">'AST'</span>]]</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    .query(<span class="st">"Pos.str.contains('G') and AST &gt; 5"</span>, engine<span class="op">=</span><span class="st">'python'</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    .sort_values(by<span class="op">=</span><span class="st">'PTS'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    .head(<span class="dv">5</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(top_guards)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             Player Pos   PTS  AST
+267    James Harden  PG  36.1  7.5
+159   Stephen Curry  PG  27.3  5.2
+68     Devin Booker  SG  26.6  6.8
+401  Damian Lillard  PG  25.8  6.9
+47     Bradley Beal  SG  25.6  5.5</code></pre>
+</div>
+</div>
+<div id="28b553dd" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average points and assists by position.</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This shows the average points and assists for each position based on the dataset.</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We can see that the average points is the highest for SF-SG, and the average assists is the highest for PG. This is consistent with the roles in basketball.</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># This is helpful to let us understand the type and magnitude of contribution in points and assists by position.</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>summary <span class="op">=</span> nba.groupby(<span class="st">"Pos"</span>).agg(</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    avg_pts<span class="op">=</span>(<span class="st">'PTS'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    avg_ast<span class="op">=</span>(<span class="st">'AST'</span>, <span class="st">'mean'</span>),</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    count<span class="op">=</span>(<span class="st">'Player'</span>, <span class="st">'count'</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>).reset_index()</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      Pos    avg_pts   avg_ast  count
+0       C   8.785000  1.422500    120
+1    C-PF   5.000000  0.700000      1
+2      PF   7.669388  1.179592    147
+3    PF-C   3.300000  0.700000      1
+4   PF-SF  11.200000  1.550000      2
+5      PG   8.659420  3.342754    138
+6      SF   8.315966  1.452941    119
+7   SF-SG  15.450000  3.150000      2
+8      SG   8.484091  1.740341    176
+9   SG-PF   8.600000  1.200000      1
+10  SG-SF   6.500000  2.300000      1</code></pre>
+</div>
+</div>
+<div id="a98d449e" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to CSV (comma)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>nba.to_csv(<span class="st">"nba_comma.csv"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Save to pipe-delimited file</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>nba.to_csv(<span class="st">"nba_pipe.csv"</span>, sep<span class="op">=</span><span class="st">"|"</span>, index<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Load both back</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>nba_comma <span class="op">=</span> pd.read_csv(<span class="st">"nba_comma.csv"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>nba_pipe <span class="op">=</span> pd.read_csv(<span class="st">"nba_pipe.csv"</span>, sep<span class="op">=</span><span class="st">"|"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="assignment-2" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-2">Assignment 2</h2>
+<div id="c60c03bc" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html()</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the NBA 2019 dataset</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/dataprofessor/data/master/nba-player-stats-2019.csv"</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>nba <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>nba <span class="op">=</span> nba.dropna()</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>nba.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+            <div id="2qtdVk"></div>
+            <script type="text/javascript" data-lets-plot-script="library">
+                if(!window.letsPlotCallQueue) {
+                    window.letsPlotCallQueue = [];
+                }; 
+                window.letsPlotCall = function(f) {
+                    window.letsPlotCallQueue.push(f);
+                };
+                (function() {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+                    script.onload = function() {
+                        window.letsPlotCall = function(f) {f();};
+                        window.letsPlotCallQueue.forEach(function(f) {f();});
+                        window.letsPlotCallQueue = [];
+                        
+                    };
+                    script.onerror = function(event) {
+                        window.letsPlotCall = function(f) {};    // noop
+                        window.letsPlotCallQueue = [];
+                        var div = document.createElement("div");
+                        div.style.color = 'darkred';
+                        div.textContent = 'Error loading Lets-Plot JS';
+                        document.getElementById("2qtdVk").appendChild(div);
+                    };
+                    var e = document.getElementById("2qtdVk");
+                    e.appendChild(script);
+                })()
+            </script>
+            
+</div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Player</th>
+<th data-quarto-table-cell-role="th">Pos</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Tm</th>
+<th data-quarto-table-cell-role="th">G</th>
+<th data-quarto-table-cell-role="th">GS</th>
+<th data-quarto-table-cell-role="th">MP</th>
+<th data-quarto-table-cell-role="th">FG</th>
+<th data-quarto-table-cell-role="th">FGA</th>
+<th data-quarto-table-cell-role="th">FG%</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">FT%</th>
+<th data-quarto-table-cell-role="th">ORB</th>
+<th data-quarto-table-cell-role="th">DRB</th>
+<th data-quarto-table-cell-role="th">TRB</th>
+<th data-quarto-table-cell-role="th">AST</th>
+<th data-quarto-table-cell-role="th">STL</th>
+<th data-quarto-table-cell-role="th">BLK</th>
+<th data-quarto-table-cell-role="th">TOV</th>
+<th data-quarto-table-cell-role="th">PF</th>
+<th data-quarto-table-cell-role="th">PTS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Álex Abrines</td>
+<td>SG</td>
+<td>25</td>
+<td>OKC</td>
+<td>31</td>
+<td>2</td>
+<td>19.0</td>
+<td>1.8</td>
+<td>5.1</td>
+<td>0.357</td>
+<td>...</td>
+<td>0.923</td>
+<td>0.2</td>
+<td>1.4</td>
+<td>1.5</td>
+<td>0.6</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.7</td>
+<td>5.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Quincy Acy</td>
+<td>PF</td>
+<td>28</td>
+<td>PHO</td>
+<td>10</td>
+<td>0</td>
+<td>12.3</td>
+<td>0.4</td>
+<td>1.8</td>
+<td>0.222</td>
+<td>...</td>
+<td>0.700</td>
+<td>0.3</td>
+<td>2.2</td>
+<td>2.5</td>
+<td>0.8</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>2.4</td>
+<td>1.7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Jaylen Adams</td>
+<td>PG</td>
+<td>22</td>
+<td>ATL</td>
+<td>34</td>
+<td>1</td>
+<td>12.6</td>
+<td>1.1</td>
+<td>3.2</td>
+<td>0.345</td>
+<td>...</td>
+<td>0.778</td>
+<td>0.3</td>
+<td>1.4</td>
+<td>1.8</td>
+<td>1.9</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.8</td>
+<td>1.3</td>
+<td>3.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Steven Adams</td>
+<td>C</td>
+<td>25</td>
+<td>OKC</td>
+<td>80</td>
+<td>80</td>
+<td>33.4</td>
+<td>6.0</td>
+<td>10.1</td>
+<td>0.595</td>
+<td>...</td>
+<td>0.500</td>
+<td>4.9</td>
+<td>4.6</td>
+<td>9.5</td>
+<td>1.6</td>
+<td>1.5</td>
+<td>1.0</td>
+<td>1.7</td>
+<td>2.6</td>
+<td>13.9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Bam Adebayo</td>
+<td>C</td>
+<td>21</td>
+<td>MIA</td>
+<td>82</td>
+<td>28</td>
+<td>23.3</td>
+<td>3.4</td>
+<td>5.9</td>
+<td>0.576</td>
+<td>...</td>
+<td>0.735</td>
+<td>2.0</td>
+<td>5.3</td>
+<td>7.3</td>
+<td>2.2</td>
+<td>0.9</td>
+<td>0.8</td>
+<td>1.5</td>
+<td>2.5</td>
+<td>8.9</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 29 columns</p>
+</div>
+</div>
+</div>
+<p>Part 2 - Q1</p>
+<div id="bb106e5b" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the scatter plot</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (ggplot(nba, aes(x<span class="op">=</span><span class="st">'PTS'</span>, y<span class="op">=</span><span class="st">'AST'</span>, color<span class="op">=</span><span class="st">'Age'</span>))</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> geom_point()</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> labs(</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>         title<span class="op">=</span><span class="st">'Points vs. Assists of NBA Players'</span>,</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>         subtitle<span class="op">=</span><span class="st">'Colored by Player Age'</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>         caption<span class="op">=</span><span class="st">'Source: dataprofessor/data'</span>,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>         x<span class="op">=</span><span class="st">'Total Points (PTS)'</span>,</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>         y<span class="op">=</span><span class="st">'Total Assists (AST)'</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>         color<span class="op">=</span><span class="st">'Age of Player'</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> theme(</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>         axis_text<span class="op">=</span>element_text(color<span class="op">=</span><span class="st">'blue'</span>, face<span class="op">=</span><span class="st">'bold'</span>),</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>         plot_title<span class="op">=</span>element_text(size<span class="op">=</span><span class="dv">16</span>, face<span class="op">=</span><span class="st">'bold'</span>),</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>         plot_subtitle<span class="op">=</span>element_text(size<span class="op">=</span><span class="dv">12</span>, color<span class="op">=</span><span class="st">'gray'</span>)</span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>     )</span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> scale_color_continuous(name<span class="op">=</span><span class="st">'Player Age'</span>)</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Find the player with the highest assists</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>player_with_max_ast <span class="op">=</span> nba.loc[nba[<span class="st">'AST'</span>].idxmax()]</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame for the annotation</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>annotation_df <span class="op">=</span> pd.DataFrame([player_with_max_ast])</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the annotation label with player name, assist count, and age</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>annotation_df[<span class="st">'label_text'</span>] <span class="op">=</span> (annotation_df[<span class="st">'Player'</span>] <span class="op">+</span> <span class="st">' (AST: '</span> <span class="op">+</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>                               annotation_df[<span class="st">'AST'</span>].astype(<span class="bu">int</span>).astype(<span class="bu">str</span>) <span class="op">+</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>                               <span class="st">', Age: '</span> <span class="op">+</span> annotation_df[<span class="st">'Age'</span>].astype(<span class="bu">int</span>).astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">')'</span>)</span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a><span class="co"># Annotate this player</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>p <span class="op">=</span> (p</span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> geom_point(aes(x<span class="op">=</span><span class="st">'PTS'</span>, y<span class="op">=</span><span class="st">'AST'</span>), data<span class="op">=</span>annotation_df, size<span class="op">=</span><span class="dv">5</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>     <span class="op">+</span> geom_text(data<span class="op">=</span>annotation_df,</span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>                 mapping<span class="op">=</span>aes(x<span class="op">=</span><span class="st">'PTS'</span>, y<span class="op">=</span><span class="st">'AST'</span>, label<span class="op">=</span><span class="st">'label_text'</span>),</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>                 nudge_x<span class="op">=</span><span class="dv">10</span>, nudge_y<span class="op">=</span><span class="dv">5</span>, ha<span class="op">=</span><span class="st">'left'</span>, va<span class="op">=</span><span class="st">'bottom'</span>)</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>p</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+   <div id="rZzwCD"></div>
+   <script type="text/javascript" data-lets-plot-script="plot">
+   
+   (function() {
+   // ----------
+   
+   const forceImmediateRender = false;
+   const responsive = false;
+   
+   let sizing = {
+       width_mode: "MIN",
+       height_mode: "SCALED",
+       width: null, 
+       height: null 
+   };
+   
+   const preferredWidth = document.body.dataset.letsPlotPreferredWidth;
+   if (preferredWidth !== undefined) {
+       sizing = {
+           width_mode: 'FIXED',
+           height_mode: 'SCALED',
+           width: parseFloat(preferredWidth)
+       };
+   }
+   
+   const containerDiv = document.getElementById("rZzwCD");
+   let fig = null;
+   
+   function renderPlot() {
+       if (fig === null) {
+           const plotSpec = {
+"data":{
+"Age":[25.0,28.0,22.0,25.0,21.0,21.0,25.0,33.0,21.0,23.0,20.0,26.0,28.0,25.0,25.0,30.0,30.0,30.0,20.0,24.0,21.0,34.0,21.0,24.0,33.0,33.0,33.0,31.0,20.0,23.0,19.0,25.0,25.0,25.0,22.0,21.0,20.0,34.0,26.0,26.0,26.0,28.0,23.0,30.0,30.0,32.0,29.0,25.0,22.0,30.0,32.0,24.0,24.0,21.0,29.0,26.0,30.0,26.0,26.0,30.0,22.0,29.0,25.0,26.0,29.0,34.0,23.0,19.0,22.0,26.0,28.0,28.0,28.0,21.0,32.0,32.0,32.0,22.0,20.0,22.0,28.0,26.0,23.0,30.0,22.0,22.0,28.0,23.0,19.0,22.0,21.0,27.0,27.0,27.0,26.0,26.0,26.0,27.0,27.0,27.0,27.0,25.0,29.0,29.0,29.0,23.0,37.0,25.0,27.0,27.0,27.0,27.0,24.0,32.0,23.0,42.0,19.0,27.0,27.0,27.0,24.0,30.0,25.0,23.0,24.0,36.0,36.0,36.0,31.0,31.0,31.0,23.0,23.0,21.0,21.0,21.0,24.0,27.0,26.0,21.0,21.0,31.0,23.0,31.0,26.0,25.0,28.0,28.0,28.0,28.0,26.0,28.0,38.0,26.0,26.0,26.0,28.0,31.0,28.0,30.0,27.0,25.0,22.0,29.0,21.0,29.0,24.0,24.0,24.0,24.0,28.0,28.0,28.0,33.0,29.0,22.0,22.0,20.0,29.0,25.0,22.0,19.0,22.0,22.0,22.0,24.0,22.0,32.0,25.0,33.0,24.0,30.0,20.0,22.0,22.0,22.0,22.0,31.0,31.0,31.0,24.0,28.0,28.0,28.0,21.0,21.0,22.0,22.0,22.0,29.0,23.0,29.0,29.0,29.0,27.0,26.0,34.0,20.0,25.0,25.0,25.0,26.0,21.0,22.0,28.0,28.0,28.0,29.0,35.0,20.0,30.0,27.0,24.0,34.0,34.0,34.0,38.0,38.0,38.0,32.0,28.0,33.0,20.0,20.0,26.0,23.0,23.0,30.0,34.0,23.0,25.0,24.0,26.0,23.0,31.0,28.0,33.0,28.0,28.0,28.0,32.0,29.0,23.0,25.0,26.0,26.0,26.0,29.0,25.0,25.0,35.0,24.0,27.0,26.0,26.0,26.0,24.0,24.0,24.0,24.0,25.0,23.0,20.0,38.0,28.0,28.0,23.0,24.0,23.0,24.0,26.0,22.0,36.0,32.0,32.0,32.0,27.0,22.0,28.0,29.0,29.0,29.0,30.0,24.0,25.0,26.0,26.0,26.0,32.0,25.0,33.0,20.0,21.0,25.0,22.0,29.0,35.0,31.0,31.0,33.0,21.0,26.0,21.0,24.0,24.0,20.0,19.0,21.0,23.0,23.0,23.0,28.0,34.0,25.0,27.0,27.0,27.0,31.0,22.0,31.0,23.0,23.0,23.0,31.0,22.0,22.0,22.0,26.0,26.0,26.0,31.0,31.0,31.0,23.0,23.0,21.0,25.0,23.0,27.0,22.0,30.0,30.0,30.0,27.0,25.0,26.0,26.0,26.0,22.0,25.0,25.0,27.0,27.0,27.0,27.0,19.0,21.0,23.0,37.0,37.0,37.0,29.0,20.0,23.0,22.0,22.0,22.0,26.0,23.0,24.0,21.0,33.0,33.0,33.0,26.0,26.0,25.0,27.0,26.0,29.0,24.0,28.0,30.0,30.0,30.0,33.0,26.0,22.0,30.0,30.0,30.0,32.0,25.0,29.0,23.0,23.0,23.0,22.0,23.0,28.0,28.0,28.0,28.0,23.0,23.0,32.0,21.0,21.0,21.0,30.0,30.0,30.0,21.0,24.0,24.0,22.0,32.0,32.0,32.0,32.0,32.0,24.0,23.0,23.0,23.0,27.0,26.0,27.0,31.0,27.0,26.0,25.0,27.0,31.0,32.0,20.0,21.0,27.0,31.0,31.0,31.0,28.0,25.0,30.0,33.0,22.0,27.0,27.0,27.0,22.0,25.0,20.0,28.0,28.0,28.0,28.0,29.0,27.0,27.0,27.0,23.0,29.0,29.0,29.0,29.0,23.0,28.0,23.0,22.0,21.0,19.0,27.0,27.0,27.0,21.0,21.0,21.0,25.0,26.0,27.0,26.0,25.0,33.0,24.0,40.0,20.0,28.0,28.0,28.0,24.0,26.0,25.0,28.0,24.0,23.0,21.0,20.0,26.0,27.0,23.0,23.0,23.0,23.0,34.0,23.0,23.0,23.0,36.0,30.0,29.0,21.0,33.0,24.0,24.0,24.0,24.0,26.0,23.0,28.0,30.0,23.0,30.0,25.0,25.0,25.0,23.0,23.0,23.0,27.0,25.0,25.0,23.0,21.0,25.0,24.0,34.0,23.0,23.0,25.0,23.0,26.0,26.0,26.0,23.0,24.0,25.0,21.0,20.0,32.0,30.0,27.0,24.0,28.0,22.0,22.0,21.0,25.0,24.0,24.0,24.0,27.0,25.0,30.0,30.0,30.0,34.0,24.0,24.0,24.0,20.0,21.0,21.0,21.0,28.0,28.0,28.0,24.0,26.0,22.0,29.0,29.0,29.0,21.0,19.0,24.0,21.0,21.0,21.0,30.0,33.0,32.0,32.0,32.0,32.0,19.0,27.0,21.0,21.0,21.0,21.0,25.0,25.0,25.0,28.0,28.0,23.0,21.0,21.0,21.0,20.0,30.0,32.0,32.0,32.0,31.0,23.0,22.0,22.0,22.0,26.0,29.0,22.0,30.0,28.0,27.0,24.0,33.0,23.0,20.0,23.0,33.0,30.0,22.0,31.0,23.0,26.0,26.0,26.0,19.0,24.0,23.0,28.0,37.0,21.0,27.0,28.0,20.0,28.0,24.0,24.0,29.0,25.0,27.0,24.0,22.0,30.0,24.0,26.0,29.0,23.0,26.0,28.0,23.0,24.0,32.0,32.0,21.0,24.0,22.0,22.0,23.0,23.0,23.0,26.0,26.0,26.0,23.0,33.0,30.0,20.0,26.0,29.0,29.0,29.0,22.0,21.0,21.0,21.0],
+"AST":[0.6,0.8,1.9,1.6,2.2,0.3,0.9,2.4,1.3,0.7,1.4,4.0,1.3,0.5,3.0,0.8,1.1,0.2,0.3,5.9,0.0,0.5,0.7,3.3,3.7,3.3,3.8,5.3,1.8,1.1,1.0,1.0,1.2,0.5,0.8,5.4,0.8,5.6,1.5,1.3,1.9,2.9,0.6,3.3,3.5,1.1,2.3,5.5,1.2,1.0,1.7,1.1,2.5,1.2,0.8,1.3,3.8,0.8,0.6,1.9,0.7,5.5,0.5,3.8,2.0,1.0,0.9,0.7,6.8,0.1,2.4,2.0,4.0,0.3,1.3,1.4,1.2,2.1,1.2,2.2,0.5,3.2,0.9,0.9,1.2,1.4,1.1,1.4,1.5,3.2,1.3,2.0,2.5,1.1,2.7,2.8,2.6,2.0,1.2,2.9,0.8,0.3,4.0,4.3,4.0,1.5,2.3,1.3,2.8,3.3,2.7,0.8,1.4,1.3,1.8,1.1,1.8,2.5,1.3,4.1,3.1,0.7,2.4,1.0,0.1,0.7,0.9,0.6,1.6,2.0,0.7,1.0,0.6,0.5,0.4,0.6,0.4,1.6,2.4,2.0,0.9,6.0,0.4,6.4,2.0,1.6,3.6,1.3,1.1,1.5,1.1,1.0,3.6,1.2,1.3,1.0,1.7,0.8,0.9,5.2,0.5,3.9,0.6,0.8,0.0,1.4,1.0,1.0,1.0,0.0,3.8,2.4,4.2,0.8,6.2,0.1,0.5,0.3,0.9,4.6,1.1,6.0,1.2,0.6,1.9,1.8,0.8,4.8,1.4,1.4,6.0,5.9,0.7,0.0,0.8,0.5,0.9,1.4,1.2,1.5,3.7,0.7,0.7,0.8,0.3,0.8,1.3,1.4,0.0,2.4,2.6,0.5,0.2,0.7,1.2,0.6,1.6,1.0,1.9,1.2,2.1,3.6,7.3,0.1,4.2,4.4,3.5,1.3,0.6,3.1,2.6,1.1,1.8,4.4,4.7,3.9,1.7,1.9,0.7,2.6,4.1,1.2,1.5,3.3,2.0,0.9,3.7,1.9,1.4,2.6,1.0,1.0,2.6,0.0,1.6,6.9,0.5,0.8,0.9,0.6,1.8,5.4,1.2,2.5,2.4,2.7,1.9,7.5,1.2,2.0,1.8,2.2,2.4,2.8,2.7,2.9,1.4,0.0,1.7,1.2,1.9,1.4,0.5,0.2,3.4,1.0,0.8,1.0,1.5,0.7,2.5,0.4,0.6,2.3,2.8,2.1,1.3,1.7,7.7,1.8,2.2,1.4,0.0,1.6,0.9,1.8,2.0,1.3,4.2,1.0,0.4,2.9,0.0,3.0,0.8,1.3,3.2,0.8,5.7,0.0,3.0,6.9,1.1,1.1,0.8,1.1,1.1,2.3,1.2,1.3,1.0,4.2,8.3,0.3,0.8,0.3,1.0,1.3,0.1,1.2,0.0,0.0,0.0,2.5,1.3,1.3,1.6,2.9,2.5,4.2,0.6,0.6,0.6,7.3,1.2,0.6,0.4,2.2,0.0,4.8,2.3,2.0,3.0,3.9,1.3,1.7,1.9,1.4,1.8,1.0,0.0,1.0,1.8,0.8,2.3,1.1,1.1,1.2,1.2,1.1,1.2,0.9,0.8,2.5,0.5,0.5,0.6,2.2,4.5,0.7,0.4,1.1,1.3,1.0,0.4,5.0,1.1,3.3,1.2,0.3,3.9,6.9,3.1,3.5,2.2,1.8,0.0,1.5,1.2,1.2,2.2,8.7,0.5,1.0,0.5,0.2,0.8,0.2,1.4,0.8,3.2,3.4,0.3,0.9,1.0,0.7,0.7,0.5,0.9,0.9,0.6,1.5,1.4,0.4,2.2,0.0,2.3,2.3,2.5,2.4,0.5,0.0,1.0,0.7,1.0,3.0,3.4,0.9,0.7,1.7,0.4,0.2,1.1,1.0,1.0,3.2,0.4,4.3,0.7,0.6,1.1,2.1,0.1,3.0,2.0,0.9,1.2,1.1,1.4,4.2,1.1,1.6,0.6,0.4,0.5,2.3,1.9,0.8,0.0,1.0,1.0,1.5,1.4,1.8,0.8,3.6,0.3,0.5,3.9,4.8,0.2,1.2,1.3,0.8,0.9,0.8,1.3,0.3,3.2,2.6,2.5,0.6,2.1,0.6,0.7,2.8,0.5,0.4,1.0,3.2,1.1,1.5,1.2,0.4,0.7,2.4,1.2,5.2,1.8,2.6,1.2,0.7,1.6,1.3,2.4,2.2,2.7,3.7,1.7,0.5,1.0,8.2,2.7,2.7,2.6,7.6,1.3,1.2,3.0,0.9,1.2,0.5,2.1,2.0,2.7,1.4,1.3,1.5,1.5,1.5,0.8,0.0,1.1,2.0,3.1,2.7,0.3,0.7,4.1,0.0,2.2,2.0,2.3,0.9,0.3,0.4,0.6,0.6,8.0,4.3,1.7,2.9,6.1,7.0,2.9,0.7,1.0,1.6,2.0,1.5,5.0,4.1,0.8,0.8,0.8,0.5,1.5,1.1,1.7,3.0,1.5,1.1,2.3,1.8,2.2,1.1,3.1,0.0,7.7,2.3,2.3,2.2,0.0,0.7,4.0,4.8,4.3,5.4,3.6,1.9,0.7,1.0,0.2,0.5,1.7,0.9,0.4,0.0,0.4,1.0,1.2,1.4,0.8,0.0,2.1,0.4,0.5,0.4,1.3,2.1,8.2,1.4,1.4,1.4,2.1,0.9,0.7,0.5,1.0,1.0,1.9,0.3,0.6,2.4,2.0,0.3,0.7,3.4,0.3,1.9,1.2,3.9,1.6,0.5,0.0,1.4,1.0,2.2,0.2,4.8,1.9,3.8,4.2,0.6,2.8,5.9,0.5,8.7,0.7,2.1,1.6,1.5,0.8,0.5,0.5,10.7,3.9,0.0,0.8,2.5,0.6,0.8,0.5,1.8,5.4,1.2,0.2,0.5,1.1,4.3,0.4,0.2,0.8,3.3,2.2,5.3,0.4,0.5,2.5,8.1,2.1,0.7,0.5,0.8,0.9,1.1,0.8,1.5],
+"PTS":[5.3,1.7,3.2,13.9,8.9,1.7,1.0,21.3,3.7,5.6,10.9,9.9,9.4,3.7,8.0,2.5,3.7,0.7,0.0,27.7,1.0,13.4,7.0,6.7,12.5,9.9,14.1,11.7,16.3,7.3,14.9,0.9,1.3,0.0,1.9,9.9,6.2,10.9,16.4,17.7,14.3,11.5,5.0,9.3,6.1,5.6,11.6,25.6,11.3,7.0,10.5,3.3,8.4,5.0,2.8,8.0,7.6,4.8,4.4,9.6,7.3,15.9,4.2,14.1,18.0,3.5,4.7,0.9,26.6,3.3,9.9,8.2,16.1,5.7,4.9,7.6,4.1,8.3,7.5,3.5,4.0,15.6,7.5,6.6,4.3,13.0,2.1,6.4,4.8,9.3,10.5,11.3,12.1,9.3,10.9,11.8,9.7,8.8,8.4,11.6,1.7,2.6,18.7,21.3,18.2,8.3,2.3,11.4,6.0,7.5,4.7,1.5,16.6,11.1,4.4,7.4,10.3,4.8,4.3,5.4,9.2,6.3,11.9,2.5,0.8,3.1,3.7,3.1,6.0,6.7,4.3,2.0,0.9,4.2,1.8,5.7,2.9,6.7,16.8,19.5,6.6,11.2,4.9,21.1,6.9,6.9,16.3,13.3,11.3,14.5,9.6,5.7,7.9,4.2,3.8,6.0,11.9,3.0,7.9,27.3,6.2,25.9,4.0,5.8,0.0,10.8,6.1,6.3,6.1,1.5,5.9,1.7,7.3,7.1,21.2,4.2,6.0,3.7,6.4,16.8,4.9,21.2,6.2,3.3,9.8,10.7,3.2,13.7,17.3,4.9,11.3,26.0,1.7,1.5,6.0,6.0,6.0,10.3,8.4,12.0,27.5,6.7,7.4,5.3,1.8,1.3,0.8,0.9,0.0,10.2,6.9,10.4,5.1,12.9,11.8,4.0,4.3,6.9,5.9,7.5,11.8,15.1,17.3,1.5,5.3,5.0,6.3,3.7,3.6,8.2,19.8,8.4,6.5,13.6,15.7,9.1,3.9,4.2,1.3,13.7,28.0,10.8,7.0,10.8,15.9,1.4,16.0,16.2,5.0,4.7,5.3,13.6,4.2,0.0,10.3,7.4,9.2,9.4,9.8,8.7,12.3,24.5,3.0,4.0,18.1,19.1,15.5,36.1,7.7,16.6,6.3,12.9,13.7,20.0,20.9,18.2,3.2,2.0,4.3,1.5,6.5,7.8,1.9,2.5,11.5,5.6,5.8,7.3,8.8,4.0,20.7,1.8,3.6,7.6,10.8,6.8,4.3,5.9,21.2,10.5,11.6,9.5,0.0,8.9,8.2,11.2,12.2,9.6,13.6,9.4,12.8,9.7,3.0,17.0,5.2,15.0,5.7,6.8,12.1,0.0,18.3,23.8,9.6,5.0,3.7,8.1,13.8,11.5,7.2,6.7,8.2,15.4,27.4,2.3,4.7,1.5,5.2,6.3,0.9,3.9,3.3,3.5,2.0,7.8,6.9,7.5,5.3,10.9,10.8,11.1,3.4,3.7,2.8,20.1,5.4,7.0,5.1,4.5,1.0,6.9,11.0,11.0,10.9,6.5,8.6,13.7,14.0,13.1,9.7,6.7,0.0,6.8,6.8,3.0,8.5,12.8,5.8,7.0,8.6,6.8,9.1,3.7,8.5,18.7,3.0,2.8,3.4,15.3,23.7,7.6,3.9,4.0,4.7,3.6,4.9,14.3,11.1,26.6,5.9,3.8,13.7,25.8,9.6,10.7,7.0,4.0,0.0,6.3,12.5,9.5,17.0,14.2,2.4,2.0,4.6,1.7,6.8,0.9,8.5,2.5,7.5,7.9,2.3,3.6,3.0,4.1,5.0,4.7,5.5,7.3,6.7,8.2,18.7,2.7,5.1,1.0,12.2,13.1,7.0,10.9,5.0,4.0,2.6,1.7,2.7,21.0,6.4,7.3,12.0,7.6,4.7,3.9,5.9,6.4,3.9,5.0,1.8,18.3,6.4,5.5,9.3,8.2,3.5,9.9,12.6,4.4,15.2,16.7,11.6,23.8,1.1,8.9,5.3,4.8,3.0,13.7,11.9,1.4,0.0,1.8,2.5,13.9,9.4,11.5,6.5,10.4,2.0,4.6,14.8,18.2,2.1,7.0,7.4,5.9,3.2,3.3,2.0,4.0,9.4,9.4,5.3,4.0,7.1,4.9,7.3,5.7,2.4,2.1,4.5,15.6,6.5,5.2,3.5,3.3,8.2,5.7,7.7,18.8,10.0,13.0,15.2,12.9,16.9,3.9,14.5,14.3,15.0,9.5,7.5,3.6,1.7,15.6,6.3,5.7,8.2,10.6,3.7,4.5,7.8,4.4,5.5,1.8,13.9,12.6,17.5,14.2,14.1,14.3,10.6,8.6,5.1,2.0,5.8,5.5,21.4,18.1,1.2,5.0,16.6,1.4,8.1,7.2,8.7,6.7,3.3,4.2,3.4,7.3,9.2,18.0,15.1,9.0,12.7,21.1,14.1,5.1,20.0,10.6,11.1,10.5,8.9,15.5,5.8,4.8,7.8,3.8,6.9,5.4,8.0,16.7,9.1,8.3,10.9,7.5,8.9,4.6,16.9,3.0,16.9,6.5,6.9,5.5,0.0,3.8,8.9,13.6,12.9,14.7,8.9,6.7,3.3,3.7,2.2,4.0,6.7,6.0,3.9,0.0,4.2,5.9,5.9,6.1,5.5,2.0,7.2,2.9,2.0,1.9,2.7,15.7,12.1,7.8,9.4,4.7,3.2,2.2,3.3,4.5,1.0,5.7,8.1,2.3,4.5,21.5,10.9,1.0,5.0,24.4,2.7,10.9,7.3,6.8,13.3,2.3,0.0,15.6,12.8,19.9,1.4,11.0,8.4,20.8,15.0,4.8,12.0,25.6,2.6,20.7,3.5,13.5,3.9,18.0,2.2,2.6,1.6,22.9,9.9,0.0,12.3,18.1,3.6,2.6,6.5,6.1,20.0,10.1,2.5,5.3,5.8,12.6,8.2,2.8,16.9,8.7,6.9,12.2,2.3,2.3,12.6,19.1,10.1,7.7,0.0,11.5,7.8,8.9,8.5,9.4]
+},
+"mapping":{
+"x":"PTS",
+"y":"AST",
+"color":"Age"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"Player"
+},{
+"type":"str",
+"column":"Pos"
+},{
+"type":"int",
+"column":"Age"
+},{
+"type":"str",
+"column":"Tm"
+},{
+"type":"int",
+"column":"G"
+},{
+"type":"int",
+"column":"GS"
+},{
+"type":"float",
+"column":"MP"
+},{
+"type":"float",
+"column":"FG"
+},{
+"type":"float",
+"column":"FGA"
+},{
+"type":"float",
+"column":"FG%"
+},{
+"type":"float",
+"column":"3P"
+},{
+"type":"float",
+"column":"3PA"
+},{
+"type":"float",
+"column":"3P%"
+},{
+"type":"float",
+"column":"2P"
+},{
+"type":"float",
+"column":"2PA"
+},{
+"type":"float",
+"column":"2P%"
+},{
+"type":"float",
+"column":"eFG%"
+},{
+"type":"float",
+"column":"FT"
+},{
+"type":"float",
+"column":"FTA"
+},{
+"type":"float",
+"column":"FT%"
+},{
+"type":"float",
+"column":"ORB"
+},{
+"type":"float",
+"column":"DRB"
+},{
+"type":"float",
+"column":"TRB"
+},{
+"type":"float",
+"column":"AST"
+},{
+"type":"float",
+"column":"STL"
+},{
+"type":"float",
+"column":"BLK"
+},{
+"type":"float",
+"column":"TOV"
+},{
+"type":"float",
+"column":"PF"
+},{
+"type":"float",
+"column":"PTS"
+}]
+},
+"ggtitle":{
+"text":"Points vs. Assists of NBA Players",
+"subtitle":"Colored by Player Age"
+},
+"caption":{
+"text":"Source: dataprofessor/data"
+},
+"guides":{
+"x":{
+"title":"Total Points (PTS)"
+},
+"y":{
+"title":"Total Assists (AST)"
+},
+"color":{
+"title":"Age of Player"
+}
+},
+"theme":{
+"axis_text":{
+"color":"blue",
+"face":"bold",
+"blank":false
+},
+"plot_title":{
+"face":"bold",
+"size":16.0,
+"blank":false
+},
+"plot_subtitle":{
+"color":"gray",
+"size":12.0,
+"blank":false
+}
+},
+"kind":"plot",
+"scales":[{
+"name":"Player Age",
+"aesthetic":"color",
+"scale_mapper_kind":"color_gradient"
+}],
+"layers":[{
+"geom":"point",
+"mapping":{
+},
+"data_meta":{
+},
+"data":{
+}
+},{
+"geom":"point",
+"data":{
+"AST":[10.7],
+"PTS":[22.9]
+},
+"mapping":{
+"x":"PTS",
+"y":"AST"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"Player"
+},{
+"type":"str",
+"column":"Pos"
+},{
+"type":"int",
+"column":"Age"
+},{
+"type":"str",
+"column":"Tm"
+},{
+"type":"int",
+"column":"G"
+},{
+"type":"int",
+"column":"GS"
+},{
+"type":"float",
+"column":"MP"
+},{
+"type":"float",
+"column":"FG"
+},{
+"type":"float",
+"column":"FGA"
+},{
+"type":"float",
+"column":"FG%"
+},{
+"type":"float",
+"column":"3P"
+},{
+"type":"float",
+"column":"3PA"
+},{
+"type":"float",
+"column":"3P%"
+},{
+"type":"float",
+"column":"2P"
+},{
+"type":"float",
+"column":"2PA"
+},{
+"type":"float",
+"column":"2P%"
+},{
+"type":"float",
+"column":"eFG%"
+},{
+"type":"float",
+"column":"FT"
+},{
+"type":"float",
+"column":"FTA"
+},{
+"type":"float",
+"column":"FT%"
+},{
+"type":"float",
+"column":"ORB"
+},{
+"type":"float",
+"column":"DRB"
+},{
+"type":"float",
+"column":"TRB"
+},{
+"type":"float",
+"column":"AST"
+},{
+"type":"float",
+"column":"STL"
+},{
+"type":"float",
+"column":"BLK"
+},{
+"type":"float",
+"column":"TOV"
+},{
+"type":"float",
+"column":"PF"
+},{
+"type":"float",
+"column":"PTS"
+},{
+"type":"str",
+"column":"label_text"
+}]
+},
+"size":5.0,
+"color":"red"
+},{
+"geom":"text",
+"data":{
+"Age":[30.0],
+"AST":[10.7],
+"PTS":[22.9],
+"label_text":["Russell Westbrook (AST: 10, Age: 30)"]
+},
+"mapping":{
+"x":"PTS",
+"y":"AST",
+"label":"label_text"
+},
+"data_meta":{
+"series_annotations":[{
+"type":"str",
+"column":"Player"
+},{
+"type":"str",
+"column":"Pos"
+},{
+"type":"int",
+"column":"Age"
+},{
+"type":"str",
+"column":"Tm"
+},{
+"type":"int",
+"column":"G"
+},{
+"type":"int",
+"column":"GS"
+},{
+"type":"float",
+"column":"MP"
+},{
+"type":"float",
+"column":"FG"
+},{
+"type":"float",
+"column":"FGA"
+},{
+"type":"float",
+"column":"FG%"
+},{
+"type":"float",
+"column":"3P"
+},{
+"type":"float",
+"column":"3PA"
+},{
+"type":"float",
+"column":"3P%"
+},{
+"type":"float",
+"column":"2P"
+},{
+"type":"float",
+"column":"2PA"
+},{
+"type":"float",
+"column":"2P%"
+},{
+"type":"float",
+"column":"eFG%"
+},{
+"type":"float",
+"column":"FT"
+},{
+"type":"float",
+"column":"FTA"
+},{
+"type":"float",
+"column":"FT%"
+},{
+"type":"float",
+"column":"ORB"
+},{
+"type":"float",
+"column":"DRB"
+},{
+"type":"float",
+"column":"TRB"
+},{
+"type":"float",
+"column":"AST"
+},{
+"type":"float",
+"column":"STL"
+},{
+"type":"float",
+"column":"BLK"
+},{
+"type":"float",
+"column":"TOV"
+},{
+"type":"float",
+"column":"PF"
+},{
+"type":"float",
+"column":"PTS"
+},{
+"type":"str",
+"column":"label_text"
+}]
+},
+"nudge_x":10.0,
+"nudge_y":5.0,
+"ha":"left",
+"va":"bottom"
+}],
+"metainfo_list":[],
+"spec_id":"8"
+};
+           window.letsPlotCall(function() { fig = LetsPlot.buildPlotFromProcessedSpecs(plotSpec, containerDiv, sizing); });
+       } else {
+           fig.updateView({});
+       }
+   }
+   
+   const renderImmediately = 
+       forceImmediateRender || (
+           sizing.width_mode === 'FIXED' && 
+           (sizing.height_mode === 'FIXED' || sizing.height_mode === 'SCALED')
+       );
+   
+   if (renderImmediately) {
+       renderPlot();
+   }
+   
+   if (!renderImmediately || responsive) {
+       // Set up observer for initial sizing or continuous monitoring
+       var observer = new ResizeObserver(function(entries) {
+           for (let entry of entries) {
+               if (entry.contentBoxSize && 
+                   entry.contentBoxSize[0].inlineSize > 0) {
+                   if (!responsive && observer) {
+                       observer.disconnect();
+                       observer = null;
+                   }
+                   renderPlot();
+                   if (!responsive) {
+                       break;
+                   }
+               }
+           }
+       });
+       
+       observer.observe(containerDiv);
+   }
+   
+   // ----------
+   })();
+   
+   </script>
+</div>
+</div>
+<p>Part 2 - Q2</p>
+<div id="d7c7be64" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> statsmodels.formula.api <span class="im">as</span> smf</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Creating a linear regression model</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> smf.ols(<span class="st">'PTS ~ AST'</span>, data<span class="op">=</span>nba)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> model.fit()</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(results.summary())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:                    PTS   R-squared:                       0.457
+Model:                            OLS   Adj. R-squared:                  0.456
+Method:                 Least Squares   F-statistic:                     594.2
+Date:                Sun, 08 Jun 2025   Prob (F-statistic):           1.07e-95
+Time:                        15:36:02   Log-Likelihood:                -2035.9
+No. Observations:                 708   AIC:                             4076.
+Df Residuals:                     706   BIC:                             4085.
+Df Model:                           1                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P&gt;|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      3.9833      0.242     16.443      0.000       3.508       4.459
+AST            2.3989      0.098     24.376      0.000       2.206       2.592
+==============================================================================
+Omnibus:                       60.127   Durbin-Watson:                   1.652
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               78.329
+Skew:                           0.689   Prob(JB):                     9.79e-18
+Kurtosis:                       3.868   Cond. No.                         4.05
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</code></pre>
+</div>
+</div>
+<p>Comments on findings (brief): The OLS (Ordinary Least Squares) regression results show the relationship between ‘PTS’ (dependent variable) and ‘AST’ (independent variable). The R-squared value is approximately 0.457, indicating that about 45.7% of the variance in total points (‘PTS’) can be explained by the total assists (‘AST’) in this model. The coefficient for AST is approximately 2.3989. This suggests that, on average, for each additional assist a player has, their total points tend to increase by about 2.4 points, holding other factors constant (though in this simple model, ‘AST’ is the only predictor). The p-value associated with the ‘AST’ coefficient is ~0, which is very low (&lt; 5%). This indicates that the relationship between assists and points is statistically significant; we can reject the null hypothesis that there is no relationship between them. To sum up - there’s a statistically significant and positive relationship between the number of assists and the total points scored by NBA players in this dataset, with assists explaining a moderate portion of the variation in points.</p>
+</section>
+<section id="assignment-3" class="level2">
+<h2 class="anchored" data-anchor-id="assignment-3">Assignment 3</h2>
+<div id="a1d357e8" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> lets_plot <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html()</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Loading the NBA 2019 dataset</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/dataprofessor/data/master/nba-player-stats-2019.csv"</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.shape)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+            <div id="80QgH2"></div>
+            <script type="text/javascript" data-lets-plot-script="library">
+                if(!window.letsPlotCallQueue) {
+                    window.letsPlotCallQueue = [];
+                }; 
+                window.letsPlotCall = function(f) {
+                    window.letsPlotCallQueue.push(f);
+                };
+                (function() {
+                    var script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.src = "https://cdn.jsdelivr.net/gh/JetBrains/lets-plot@v4.6.2/js-package/distr/lets-plot.min.js";
+                    script.onload = function() {
+                        window.letsPlotCall = function(f) {f();};
+                        window.letsPlotCallQueue.forEach(function(f) {f();});
+                        window.letsPlotCallQueue = [];
+                        
+                    };
+                    script.onerror = function(event) {
+                        window.letsPlotCall = function(f) {};    // noop
+                        window.letsPlotCallQueue = [];
+                        var div = document.createElement("div");
+                        div.style.color = 'darkred';
+                        div.textContent = 'Error loading Lets-Plot JS';
+                        document.getElementById("80QgH2").appendChild(div);
+                    };
+                    var e = document.getElementById("80QgH2");
+                    e.appendChild(script);
+                })()
+            </script>
+            
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(708, 29)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Player</th>
+<th data-quarto-table-cell-role="th">Pos</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Tm</th>
+<th data-quarto-table-cell-role="th">G</th>
+<th data-quarto-table-cell-role="th">GS</th>
+<th data-quarto-table-cell-role="th">MP</th>
+<th data-quarto-table-cell-role="th">FG</th>
+<th data-quarto-table-cell-role="th">FGA</th>
+<th data-quarto-table-cell-role="th">FG%</th>
+<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">FT%</th>
+<th data-quarto-table-cell-role="th">ORB</th>
+<th data-quarto-table-cell-role="th">DRB</th>
+<th data-quarto-table-cell-role="th">TRB</th>
+<th data-quarto-table-cell-role="th">AST</th>
+<th data-quarto-table-cell-role="th">STL</th>
+<th data-quarto-table-cell-role="th">BLK</th>
+<th data-quarto-table-cell-role="th">TOV</th>
+<th data-quarto-table-cell-role="th">PF</th>
+<th data-quarto-table-cell-role="th">PTS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>Álex Abrines</td>
+<td>SG</td>
+<td>25</td>
+<td>OKC</td>
+<td>31</td>
+<td>2</td>
+<td>19.0</td>
+<td>1.8</td>
+<td>5.1</td>
+<td>0.357</td>
+<td>...</td>
+<td>0.923</td>
+<td>0.2</td>
+<td>1.4</td>
+<td>1.5</td>
+<td>0.6</td>
+<td>0.5</td>
+<td>0.2</td>
+<td>0.5</td>
+<td>1.7</td>
+<td>5.3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>Quincy Acy</td>
+<td>PF</td>
+<td>28</td>
+<td>PHO</td>
+<td>10</td>
+<td>0</td>
+<td>12.3</td>
+<td>0.4</td>
+<td>1.8</td>
+<td>0.222</td>
+<td>...</td>
+<td>0.700</td>
+<td>0.3</td>
+<td>2.2</td>
+<td>2.5</td>
+<td>0.8</td>
+<td>0.1</td>
+<td>0.4</td>
+<td>0.4</td>
+<td>2.4</td>
+<td>1.7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>Jaylen Adams</td>
+<td>PG</td>
+<td>22</td>
+<td>ATL</td>
+<td>34</td>
+<td>1</td>
+<td>12.6</td>
+<td>1.1</td>
+<td>3.2</td>
+<td>0.345</td>
+<td>...</td>
+<td>0.778</td>
+<td>0.3</td>
+<td>1.4</td>
+<td>1.8</td>
+<td>1.9</td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.8</td>
+<td>1.3</td>
+<td>3.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>Steven Adams</td>
+<td>C</td>
+<td>25</td>
+<td>OKC</td>
+<td>80</td>
+<td>80</td>
+<td>33.4</td>
+<td>6.0</td>
+<td>10.1</td>
+<td>0.595</td>
+<td>...</td>
+<td>0.500</td>
+<td>4.9</td>
+<td>4.6</td>
+<td>9.5</td>
+<td>1.6</td>
+<td>1.5</td>
+<td>1.0</td>
+<td>1.7</td>
+<td>2.6</td>
+<td>13.9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>Bam Adebayo</td>
+<td>C</td>
+<td>21</td>
+<td>MIA</td>
+<td>82</td>
+<td>28</td>
+<td>23.3</td>
+<td>3.4</td>
+<td>5.9</td>
+<td>0.576</td>
+<td>...</td>
+<td>0.735</td>
+<td>2.0</td>
+<td>5.3</td>
+<td>7.3</td>
+<td>2.2</td>
+<td>0.9</td>
+<td>0.8</td>
+<td>1.5</td>
+<td>2.5</td>
+<td>8.9</td>
+</tr>
+</tbody>
+</table>
+
+<p>5 rows × 29 columns</p>
+</div>
+</div>
+</div>
+<p>Part 2 - 1.1: Yes, the data is already tidy because: * Each row = one observation (one player‐season) * Each column = one variable (age, team, PTS, etc.) * Each cell = one value</p>
+<p>Part 2 - 1.2: The data is initially in WIDE format where there is one observation unit per row and stats are columns. We’ll now convert it to LONG.</p>
+<div id="5e82b23c" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># These columns collectively identify each player‐season:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>id_vars <span class="op">=</span> [<span class="st">"Player"</span>]</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Everything else (all per‐game stats, percentages, etc.) we’ll treat as measurement variables:</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>value_vars <span class="op">=</span> [c <span class="cf">for</span> c <span class="kw">in</span> df.columns <span class="cf">if</span> c <span class="kw">not</span> <span class="kw">in</span> id_vars]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="31ec6d0a" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>df.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="45">
+<pre><code>Index(['Player', 'Pos', 'Age', 'Tm', 'G', 'GS', 'MP', 'FG', 'FGA', 'FG%', '3P',
+       '3PA', '3P%', '2P', '2PA', '2P%', 'eFG%', 'FT', 'FTA', 'FT%', 'ORB',
+       'DRB', 'TRB', 'AST', 'STL', 'BLK', 'TOV', 'PF', 'PTS'],
+      dtype='object')</code></pre>
+</div>
+</div>
+<div id="6d45db9e" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">long</span> <span class="op">=</span> df.melt(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    id_vars<span class="op">=</span>id_vars,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    value_vars<span class="op">=</span>value_vars,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    var_name<span class="op">=</span><span class="st">"Stat"</span>,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    value_name<span class="op">=</span><span class="st">"Value"</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect the first few rows:</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="bu">long</span>.head</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>&lt;bound method NDFrame.head of              Player Stat Value
+0      Álex Abrines  Pos    SG
+1        Quincy Acy  Pos    PF
+2      Jaylen Adams  Pos    PG
+3      Steven Adams  Pos     C
+4       Bam Adebayo  Pos     C
+...             ...  ...   ...
+19819  Tyler Zeller  PTS  11.5
+19820    Ante Žižić  PTS   7.8
+19821   Ivica Zubac  PTS   8.9
+19822   Ivica Zubac  PTS   8.5
+19823   Ivica Zubac  PTS   9.4
+
+[19824 rows x 3 columns]&gt;</code></pre>
+</div>
+</div>
+<p>Part 2 - 2.1</p>
+<div id="54ad0673" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Player"</span>] <span class="op">=</span> df[<span class="st">"Player"</span>].<span class="bu">str</span>.replace(</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>    <span class="vs">r"</span><span class="kw">(</span><span class="dv">\w</span><span class="op">+</span><span class="kw">)</span><span class="dv">$</span><span class="vs">"</span>,                       <span class="co"># capture the final “word” (surname)</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> m: m.group(<span class="dv">1</span>).upper(),    <span class="co"># replace it with its .upper() version</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    regex<span class="op">=</span><span class="va">True</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"Player"</span>].head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>0    Álex ABRINES
+1      Quincy ACY
+2    Jaylen ADAMS
+3    Steven ADAMS
+4     Bam ADEBAYO
+Name: Player, dtype: object</code></pre>
+</div>
+</div>
+<p>Part 2 - 2.2: N/A - The NBA data has no date/time columns</p>
+<p>Part 2 - 2.3</p>
+<p>The only “missing” (NaN) values appear in percentage columns whenever the player had zero attempts for that category.</p>
+<p>For example: FG% (field‐goal %) is NaN if FGA (field‐goal attempts per game) = 0 (i.e., the player never attempted a field goal).</p>
+<p>Because percentages are computed as “made ÷ attempted,” a zero in the denominator produces NaN.</p>
+<p>Part 2 - 2.4</p>
+<div id="426568fa" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># (1) Build two boolean masks:</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>young_mask <span class="op">=</span> df[<span class="st">"Age"</span>] <span class="op">&lt;</span> <span class="dv">25</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>high_scoring_mask <span class="op">=</span> df[<span class="st">"PTS"</span>] <span class="op">&gt;=</span> <span class="dv">20</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># (2) Combine them with &amp; (AND) to get players satisfying both:</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> df[ young_mask <span class="op">&amp;</span> high_scoring_mask ]</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>filtered[[<span class="st">"Player"</span>, <span class="st">"Age"</span>, <span class="st">"Tm"</span>, <span class="st">"PTS"</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="48">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">Player</th>
+<th data-quarto-table-cell-role="th">Age</th>
+<th data-quarto-table-cell-role="th">Tm</th>
+<th data-quarto-table-cell-role="th">PTS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">19</td>
+<td>Giannis ANTETOKOUNMPO</td>
+<td>24</td>
+<td>MIL</td>
+<td>27.7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">68</td>
+<td>Devin BOOKER</td>
+<td>22</td>
+<td>PHO</td>
+<td>26.6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">181</td>
+<td>Luka DONČIĆ</td>
+<td>19</td>
+<td>DAL</td>
+<td>21.2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">200</td>
+<td>Joel EMBIID</td>
+<td>24</td>
+<td>PHI</td>
+<td>27.5</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">353</td>
+<td>Nikola JOKIĆ</td>
+<td>23</td>
+<td>DEN</td>
+<td>20.1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">388</td>
+<td>Zach LAVINE</td>
+<td>23</td>
+<td>CHI</td>
+<td>23.7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">469</td>
+<td>Donovan MITCHELL</td>
+<td>22</td>
+<td>UTA</td>
+<td>23.8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">554</td>
+<td>Julius RANDLE</td>
+<td>24</td>
+<td>NOP</td>
+<td>21.4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">573</td>
+<td>D'Angelo RUSSELL</td>
+<td>22</td>
+<td>BRK</td>
+<td>21.1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">647</td>
+<td>Karl-Anthony TOWNS</td>
+<td>23</td>
+<td>MIN</td>
+<td>24.4</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>References OpenAI. (2023). ChatGPT (June 16 version) [Large language model]. https://chat.openai.com/chat</p>
+</section>
 
 </main>
 <!-- /main column -->
